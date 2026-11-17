@@ -1,0 +1,720 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greentech · Energía solar fotovoltaica en Colombia</title>
+<meta name="description" content="Sistemas solares on grid, off grid e híbridos para hogares y negocios en Colombia. Calcula tu consumo, tu ahorro y el kit que necesitas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo/greentech-favicon.svg">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<a class="saltar" href="#calculadora">Saltar a la calculadora</a>
+
+<!-- ============ PORTADA: carpetas con los componentes de la página ============ -->
+<header class="portada" id="inicio">
+  <div class="barra">
+    <a class="barra-enlace" style="justify-self:start" href="https://claude.ai/artifact/JT3G4ouHk1RGJYrvUiqgEj" target="_blank" rel="noopener">Acceso Equipo Técnico</a>
+    <a class="marca" href="#inicio" aria-label="Green GTC Tech, inicio">
+      <img class="marca-sello" src="logo/greentech-sello-3d.svg" alt="" width="76" height="60">
+      <span>Green<b>GTC</b>Tech</span>
+    </a>
+    <a class="barra-enlace" href="#contacto">Calcula tu proyecto</a>
+  </div>
+
+  <div class="portada-texto">
+    <h1 class="titular titular-logo"><img src="logo/greentech-logo-3d-oscuro.svg" alt="Green GTC Tech · Energía verde" width="1021" height="430"></h1>
+    <p class="portada-apoyo">Energía solar para casas y negocios en Colombia: medimos tu consumo, diseñamos el sistema y lo instalamos en tu techo.</p>
+  </div>
+
+  <section class="vitrina" aria-roledescription="carrusel" aria-label="Lo principal de Greentech">
+    <div class="vitrina-lista" role="tablist" aria-label="Componentes de la página">
+      <button class="vitrina-item" role="tab" id="vt-sistemas" aria-controls="vp-sistemas" aria-selected="true"><span class="vi-nombre">Sistemas</span><span class="vi-dato">On grid, híbrido y off grid</span><span class="vi-progreso"></span></button>
+      <button class="vitrina-item" role="tab" id="vt-calculadora" aria-controls="vp-calculadora" aria-selected="false" tabindex="-1"><span class="vi-nombre">Calculadora</span><span class="vi-dato">Tu ahorro en un minuto</span><span class="vi-progreso"></span></button>
+      <button class="vitrina-item" role="tab" id="vt-kits" aria-controls="vp-kits" aria-selected="false" tabindex="-1"><span class="vi-nombre">Kits</span><span class="vi-dato">Precio instalado</span><span class="vi-progreso"></span></button>
+      <button class="vitrina-item" role="tab" id="vt-moviles" aria-controls="vp-moviles" aria-selected="false" tabindex="-1"><span class="vi-nombre">Móviles</span><span class="vi-dato">Camping, van y ferias</span><span class="vi-progreso"></span></button>
+      <button class="vitrina-item" role="tab" id="vt-empresas" aria-controls="vp-empresas" aria-selected="false" tabindex="-1"><span class="vi-nombre">Empresas</span><span class="vi-dato">Industria y electrolineras</span><span class="vi-progreso"></span></button>
+      <button class="vitrina-item" role="tab" id="vt-ley" aria-controls="vp-ley" aria-selected="false" tabindex="-1"><span class="vi-nombre">Ley 1715</span><span class="vi-dato">Beneficios tributarios</span><span class="vi-progreso"></span></button>
+    </div>
+    <div class="vitrina-escenario">
+      <div class="escena" role="tabpanel" id="vp-sistemas" aria-labelledby="vt-sistemas">
+        <div class="escena-dibujo"><img src="fotos/escena-sistemas.svg" data-reinicia alt="Casa híbrida con paneles en la placa, inversor híbrido, baterías LiFePO4, tablero, medidor bidireccional y poste de la red; la energía corre por los cables" width="820" height="540"></div>
+        <div class="escena-texto"><h2>Tipos de sistemas fotovoltaicos</h2><p>Un híbrido reúne todas las piezas: genera de día, guarda para la noche y entrega a la red.</p><ol class="escena-partes"><li>Paneles de 650 W en pares</li><li>Inversor híbrido 48 V</li><li>Baterías LiFePO4</li><li>Tablero con protecciones</li><li>Medidor bidireccional</li><li>Red y transformador</li></ol><a class="boton boton-ambar" href="#sistemas">Ver los sistemas</a></div>
+      </div>
+      <div class="escena" role="tabpanel" id="vp-calculadora" aria-labelledby="vt-calculadora" hidden>
+        <div class="escena-dibujo"><svg viewBox="0 0 400 260" aria-hidden="true"><rect class="recibo" x="40" y="30" width="170" height="210" rx="6"/><rect class="linea" x="62" y="56" width="90" height="8" rx="4"/><rect class="linea" x="62" y="74" width="120" height="6" rx="3"/><rect class="barra-mes" style="--k:0" x="62" y="150" width="7" height="70" rx="2"/><rect class="barra-mes" style="--k:1" x="73" y="138" width="7" height="82" rx="2"/><rect class="barra-mes" style="--k:2" x="84" y="156" width="7" height="64" rx="2"/><rect class="barra-mes" style="--k:3" x="95" y="130" width="7" height="90" rx="2"/><rect class="barra-mes" style="--k:4" x="106" y="124" width="7" height="96" rx="2"/><rect class="barra-mes" style="--k:5" x="117" y="132" width="7" height="88" rx="2"/><rect class="barra-mes" style="--k:6" x="128" y="146" width="7" height="74" rx="2"/><rect class="barra-mes" style="--k:7" x="139" y="140" width="7" height="80" rx="2"/><rect class="barra-mes" style="--k:8" x="150" y="128" width="7" height="92" rx="2"/><rect class="barra-mes" style="--k:9" x="161" y="120" width="7" height="100" rx="2"/><rect class="barra-mes" style="--k:10" x="172" y="134" width="7" height="86" rx="2"/><rect class="barra-mes" style="--k:11" x="183" y="142" width="7" height="78" rx="2"/>
+<circle class="anillo-fondo" cx="300" cy="135" r="62"/><circle class="anillo" cx="300" cy="135" r="62" pathLength="100"/><text class="anillo-txt" x="300" y="146" text-anchor="middle">−70 %</text></svg></div>
+        <div class="escena-texto"><h2>Calcula tu ahorro</h2><p>Sube la foto del recibo o tu consumo mensual y te decimos cuántos paneles necesitas y cuánto ahorras.</p><a class="boton boton-ambar" href="#calculadora">Calcular mi ahorro</a></div>
+      </div>
+      <div class="escena" role="tabpanel" id="vp-kits" aria-labelledby="vt-kits" hidden>
+        <div class="escena-dibujo"><img src="fotos/escena-kits.svg" data-reinicia alt="Kit desempacado: estiba con paneles de 650 W, inversor, batería LiFePO4, rieles y abrazaderas de aluminio, carretes de cable solar con conectores MC4 y caja de protecciones" width="820" height="540"></div>
+        <div class="escena-texto"><h2>Kits con precio claro</h2><p>Todo llega en una sola entrega: Semilla, Raíz y Bosque, on grid desde $11,7 millones instalados.</p><ol class="escena-partes"><li>Paneles de 650 W en estiba</li><li>Inversor</li><li>Batería LiFePO4 51,2 V</li><li>Rieles y abrazaderas de aluminio</li><li>Cable solar y conectores MC4</li><li>Breakers DC/AC y DPS</li></ol><a class="boton boton-ambar" href="#kits">Ver los kits</a></div>
+      </div>
+      <div class="escena" role="tabpanel" id="vp-moviles" aria-labelledby="vt-moviles" hidden>
+        <div class="escena-dibujo"><img src="fotos/escena-moviles.svg" data-reinicia alt="Autocaravana junto a un lago con paneles flexibles en el techo, estación de energía tras la puerta abierta, panel plegable, toldo con guirnaldas y multitoma de exterior" width="820" height="540"></div>
+        <div class="escena-texto"><h2>Energía que viaja</h2><p>Para acampar, viajar o vender en una feria sin depender de un tomacorriente.</p><ol class="escena-partes"><li>Paneles flexibles de 200 W</li><li>Estación de energía todo en uno</li><li>Panel plegable con patas</li><li>Guirnaldas LED cálidas IP65</li><li>Multitoma de exterior IP65</li></ol><a class="boton boton-ambar" href="#moviles">Ver kits móviles</a></div>
+      </div>
+      <div class="escena" role="tabpanel" id="vp-empresas" aria-labelledby="vt-empresas" hidden>
+        <div class="escena-dibujo"><img src="fotos/escena-empresas.svg" data-reinicia alt="Nave industrial con paneles en la cubierta, inversores trifásicos, transformador, contenedor de baterías y electrolinera bajo marquesina solar con cargadores para carros eléctricos" width="820" height="540"></div>
+        <div class="escena-texto"><h2>Industria y electrolineras</h2><p>Desde 30 kW: techos industriales, respaldo con baterías y cargadores para carros eléctricos.</p><ol class="escena-partes"><li>Paneles en la cubierta</li><li>Inversores trifásicos</li><li>Transformador y medida</li><li>Contenedor de baterías</li><li>Marquesina solar</li><li>Cargadores para carros</li></ol><a class="boton boton-ambar" href="#empresas">Ver la línea empresarial</a></div>
+      </div>
+      <div class="escena" role="tabpanel" id="vp-ley" aria-labelledby="vt-ley" hidden>
+        <div class="escena-dibujo"><svg viewBox="0 0 400 260" aria-hidden="true"><circle class="anillo-fondo grande" cx="200" cy="130" r="92"/><circle class="anillo ley-anillo" cx="200" cy="130" r="92" pathLength="100"/><text class="anillo-txt grande" x="200" y="146" text-anchor="middle">50 %</text><rect class="moneda" style="--k:0" x="60" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:1" x="96" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:2" x="132" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:3" x="168" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:4" x="204" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:5" x="240" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:6" x="276" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:7" x="312" y="226" width="26" height="8" rx="4"/><rect class="moneda" style="--k:8" x="348" y="226" width="26" height="8" rx="4"/></svg></div>
+        <div class="escena-texto"><h2>Hasta 50 % en renta</h2><p>Deducción en renta, equipos sin IVA ni arancel y depreciación acelerada. Hacemos la solicitud ante la UPME.</p><a class="boton boton-ambar" href="#beneficios">Ver los beneficios</a></div>
+      </div>
+    </div>
+  </section>
+</header>
+
+<main>
+<!-- ============ INTRO ============ -->
+<section class="intro" aria-label="Qué hacemos">
+  <p class="enunciado revelar">El sol sobre tu techo <img class="miniatura" src="fotos/solar-panels-on-old-home.webp" alt="Paneles solares sobre el tejado de una casa" width="96" height="64"> puede pagar buena parte de tu recibo de energía <img class="miniatura" src="fotos/elster-type-r15-electricity-meter.webp" alt="Medidor de energía en un muro" width="96" height="64">.</p>
+  <div class="perfiles" role="group" aria-label="¿Para quién es el proyecto?">
+    <a class="perfil p-hogar" href="#calculadora" data-perfil="hogar" aria-pressed="false">
+      <h3>Hogar</h3><p>Casas y apartamentos de 150 a 1.200 kWh al mes. Kits con precio y calculadora.</p><span class="perfil-ir">Calcular mi casa</span></a>
+    <a class="perfil p-mipyme" href="#calculadora" data-perfil="mipyme" aria-pressed="false">
+      <h3>Mipyme</h3><p>Tiendas, restaurantes, consultorios y talleres. Tarifa comercial y beneficios de la Ley 1715.</p><span class="perfil-ir">Calcular mi negocio</span></a>
+    <a class="perfil p-movil" href="#moviles" data-perfil="movil" aria-pressed="false">
+      <h3>Móvil</h3><p>Camping, autocaravanas, stands y comercio en carpa. Energía que se lleva a cualquier parte.</p><span class="perfil-ir">Ver kits móviles</span></a>
+    <a class="perfil p-empresa" href="#empresas" data-perfil="empresa" aria-pressed="false">
+      <h3>Empresas</h3><p>Industria, fábricas, bodegas, grandes superficies, granjas solares y electrolineras desde 30 kW.</p><span class="perfil-ir">Ver la línea empresarial</span></a>
+  </div>
+</section>
+
+<!-- ============ SISTEMAS ============ -->
+<section class="tipos" id="sistemas">
+  <div class="tipos-cabeza revelar">
+    <p class="tipos-ceja">Sistemas fotovoltaicos</p>
+    <h2>Tipos de Sistemas Fotovoltaicos</h2>
+    <p>Tres formas de llevar el sol a tu casa o negocio. Elige según tu conexión a la red y si necesitas energía de noche o durante los cortes.</p>
+  </div>
+
+  <div class="ts" data-ts aria-roledescription="carrusel" aria-label="Tipos de sistemas fotovoltaicos">
+    <div class="ts-tabs" role="tablist" aria-label="Elige un sistema">
+      <button class="ts-tab" role="tab" id="ts-t0" aria-controls="ts-p0" aria-selected="true"><span class="ts-n">01</span><span class="ts-nom">On grid</span><span class="ts-sub">con microinversores</span><i class="ts-prog"></i></button>
+      <button class="ts-tab" role="tab" id="ts-t1" aria-controls="ts-p1" aria-selected="false" tabindex="-1"><span class="ts-n">02</span><span class="ts-nom">Híbrido</span><span class="ts-sub">red + baterías</span><i class="ts-prog"></i></button>
+      <button class="ts-tab" role="tab" id="ts-t2" aria-controls="ts-p2" aria-selected="false" tabindex="-1"><span class="ts-n">03</span><span class="ts-nom">Off grid</span><span class="ts-sub">aislado de la red</span><i class="ts-prog"></i></button>
+    </div>
+
+    <div class="ts-vista">
+      <article class="ts-slide" role="tabpanel" id="ts-p0" aria-labelledby="ts-t0" data-activa>
+        <figure class="ts-media">
+          <button class="ts-abrir" data-figura="figura/ongrid-micro.html" aria-label="Ver el sistema on grid con microinversores en movimiento">
+            <img src="fotos/sistema-ongrid-micro.webp" alt="Casa de un piso con 8 paneles de 640 W en el techo, dos strings de 4 en serie, dos microinversores junto al tablero, cada uno a su breaker, y medidor cero exportación" width="1600" height="1137" loading="lazy">
+            <span class="ts-play"><i></i>Ver en movimiento</span>
+          </button>
+          <span class="ts-flota f1"><b>5,12 kWp</b>8 × 640 W</span>
+          <span class="ts-flota f2"><b>0 W</b>a la red · cero export</span>
+          <span class="ts-flota f3"><b>Sin baterías</b>menor inversión</span>
+        </figure>
+        <div class="ts-texto">
+          <h3>On grid con microinversores</h3>
+          <p class="ts-lead">Conectado a la red eléctrica y sin baterías: la inversión más baja para bajar tu factura de energía.</p>
+          <p>Ocho paneles de 640 W y 41,0 V anclados al techo forman dos strings de cuatro paneles en serie: el positivo de cada panel se conecta al negativo del siguiente, y cada string sale por el negativo del primer panel y el positivo del último directo a su microinversor, con unos 164 V DC. Cada microinversor entrega 110/120 V al tablero, y en la acometida un medidor cero exportación evita que la energía salga a la red de la compañía de electricidad.</p>
+          <p>Mostramos tres formas de instalarlo: los microinversores junto al tablero, cada uno con su breaker; en el techo, con las dos salidas unidas en un solo circuito que alimenta el tablero principal; o en el techo, un microinversor por circuito, uno para iluminación y tomas y otro para cocina, electrodomésticos y ventilación. De día el tablero toma la energía solar y la complementa con la red; de noche la casa funciona solo con la red. Sin baterías el sistema no sube de precio, y los microinversores cuestan menos que un inversor híbrido.</p>
+          <ul class="ts-chips"><li>2 strings de 4 en serie</li><li>2 microinversores 120 V</li><li>Medidor cero exportación</li><li>3 escenarios de instalación</li></ul>
+          <button class="boton boton-claro ts-ver" data-figura="figura/ongrid-micro.html">Ver el sistema en movimiento</button>
+        </div>
+      </article>
+
+      <article class="ts-slide" role="tabpanel" id="ts-p1" aria-labelledby="ts-t1" hidden>
+        <figure class="ts-media">
+          <img src="fotos/sistema-hibrido.webp" alt="Casa con paneles en el techo, inversor híbrido de 48 V, banco de baterías LiFePO4 y conexión a la red con medidor bidireccional" width="1600" height="1137" loading="lazy">
+          <span class="ts-flota f1"><b>20 kWh</b>baterías LiFePO4</span>
+          <span class="ts-flota f2"><b>Respaldo</b>en apagones</span>
+          <span class="ts-flota f3"><b>Bidireccional</b>CREG 174 de 2021</span>
+        </figure>
+        <div class="ts-texto">
+          <h3>Híbrido</h3>
+          <p class="ts-lead">Red, paneles y baterías: ahorras de día, usas lo guardado de noche y sigues con luz cuando se va la energía.</p>
+          <p>Los paneles alimentan un inversor híbrido de 48 V que reparte la energía entre la casa, las baterías de litio LiFePO4 y la red. Primero atiende el consumo, luego carga las baterías y, con un medidor bidireccional según la CREG 174 de 2021, puede entregar los excedentes a la red. Si hay un corte, el inversor se separa de la red y sigue alimentando los circuitos de respaldo con el sol y las baterías.</p>
+          <ul class="ts-chips"><li>Inversor híbrido 48 V</li><li>Baterías LiFePO4</li><li>Respaldo automático</li><li>Medidor bidireccional</li></ul>
+          <a class="boton boton-claro" href="#calculadora">Calcula tu sistema</a>
+        </div>
+      </article>
+
+      <article class="ts-slide" role="tabpanel" id="ts-p2" aria-labelledby="ts-t2" hidden>
+        <figure class="ts-media">
+          <img src="fotos/sistema-offgrid.webp" alt="Casa de finca sin conexión a la red, con paneles, inversor off grid y banco de baterías de 48 V" width="1600" height="1137" loading="lazy">
+          <span class="ts-flota f1"><b>Autónomo</b>sin red eléctrica</span>
+          <span class="ts-flota f2"><b>120/240 V</b>red propia</span>
+          <span class="ts-flota f3"><b>48 V</b>banco de baterías</span>
+        </figure>
+        <div class="ts-texto">
+          <h3>Off grid, aislado</h3>
+          <p class="ts-lead">Sin conexión a la red: energía propia para fincas, cabañas y zonas donde no llega el servicio.</p>
+          <p>Los paneles cargan un banco de baterías de 48 V a través de un inversor cargador off grid, que forma su propia red de 120/240 V para la casa. El banco se dimensiona para cubrir la noche y los días nublados, y se puede sumar una planta eléctrica de respaldo. Es la opción cuando traer la red sale más caro que generar tu propia energía.</p>
+          <ul class="ts-chips"><li>Inversor cargador 48 V</li><li>Baterías para la noche</li><li>Ideal para zonas rurales</li><li>Planta de respaldo opcional</li></ul>
+          <a class="boton boton-claro" href="#calculadora">Calcula tu sistema</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="ts-nav">
+      <button class="ts-flecha" data-ts-prev aria-label="Sistema anterior">←</button>
+      <button class="ts-pausa" data-ts-pausa aria-label="Pausar el carrusel">❚❚</button>
+      <button class="ts-flecha" data-ts-next aria-label="Sistema siguiente">→</button>
+    </div>
+  </div>
+
+  <dialog class="ts-dialogo" data-ts-dialogo aria-label="Sistema on grid con microinversores en movimiento">
+    <div class="ts-dialogo-barra"><b>On grid con microinversores · en movimiento</b><button data-ts-cerrar aria-label="Cerrar">✕</button></div>
+    <iframe title="Sistema on grid con microinversores, animado" loading="lazy"></iframe>
+  </dialog>
+
+<div class="baldosas baldosas-dos">
+    <figure class="baldosa campo-verde revelar">
+      <div class="baldosa-fotos">
+        <img src="fotos/close-solar-cell-panel.webp" alt="Primer plano de paneles solares monocristalinos con sus celdas y marco de aluminio" width="1024" height="440" loading="lazy">
+        <img src="fotos/terrytown-solar-panel-roof-house.webp" alt="Casa con una fila de paneles solares instalados sobre el tejado" width="1600" height="1200" loading="lazy">
+      </div>
+      <style>
+        .baldosa-fotos{position:relative;aspect-ratio:16/10;clip-path:var(--celda);background:var(--verde);overflow:hidden}
+        .baldosas-dos .baldosa .baldosa-fotos img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;clip-path:none}
+        .baldosa-fotos img:last-child{opacity:0;animation:baldosa-cruce 12s ease-in-out infinite}
+        @keyframes baldosa-cruce{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+        @media (prefers-reduced-motion:reduce){.baldosa-fotos img:last-child{animation:none}}
+      </style>
+      <figcaption><strong>Paneles de 650 W</strong> Monocristalinos de 22 a 24 % de eficiencia, con vidrio antipolvo y 25 a 30 años de garantía de producción.</figcaption>
+    </figure>
+    <figure class="baldosa campo-lima revelar">
+      <img src="fotos/medidor-bidireccional-digital.webp" alt="Medidor de energía digital bidireccional con pantalla LCD y monitoreo por wifi desde el celular" width="1600" height="1000" loading="lazy">
+      <figcaption><strong>Medidor bidireccional</strong> Registra lo que compras y lo que entregas a la red; el excedente se descuenta o se paga según la CREG 174.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CALCULADORA (la cosa viva) ============ -->
+<section class="calculadora" id="calculadora">
+  <div class="calc-cabeza revelar">
+    <h2>Calcula tu sistema solar</h2>
+    <p>Elige qué quieres lograr y cuánto consumes: con la foto del recibo, tu promedio mensual o la lista de lo que tienes en casa.</p>
+  </div>
+
+  <div class="calc">
+    <div class="calc-entrada">
+      <p class="calc-paso"><b>1</b> ¿Cuánto consumes?</p>
+      <div class="modos" role="tablist" aria-label="Cómo quieres calcular">
+        <button role="tab" aria-selected="true" aria-controls="modo-recibo" id="t-recibo" class="modo">Foto del recibo</button>
+        <button role="tab" aria-selected="false" aria-controls="modo-promedio" id="t-promedio" class="modo" tabindex="-1">Promedio mensual</button>
+        <button role="tab" aria-selected="false" aria-controls="modo-aparatos" id="t-aparatos" class="modo" tabindex="-1">Mis electrodomésticos</button>
+      </div>
+
+      <div class="modo-panel" id="modo-recibo" role="tabpanel" aria-labelledby="t-recibo">
+        <label class="subir">
+          <input type="file" accept="image/*" capture="environment" id="foto-recibo">
+          <span class="subir-caja"><span class="subir-titulo">Sube o toma una foto del recibo</span> La leemos en tu teléfono o computador; la foto no sale de tu equipo.</span>
+        </label>
+        <p class="ocr-estado" id="ocr-estado" aria-live="polite"></p>
+        <div class="ocr-opciones" id="ocr-opciones"></div>
+        <img id="ocr-vista" class="ocr-vista" alt="Vista previa del recibo" hidden>
+      </div>
+
+      <div class="modo-panel" id="modo-promedio" role="tabpanel" aria-labelledby="t-promedio" hidden>
+        <label class="campo">Consumo promedio mensual (kWh)
+          <input type="number" id="kwh-mes" min="20" max="20000" step="1" value="420" inputmode="numeric">
+        </label>
+        <p class="nota">Está en el recibo como «consumo promedio» o en la gráfica de los últimos seis meses.</p>
+      </div>
+
+      <div class="modo-panel" id="modo-aparatos" role="tabpanel" aria-labelledby="t-aparatos" hidden>
+        <table class="aparatos">
+          <thead><tr><th scope="col">Equipo</th><th scope="col">Cantidad</th><th scope="col">Horas al día</th><th scope="col">kWh/mes</th></tr></thead>
+          <tbody id="aparatos-cuerpo"></tbody>
+          <tfoot><tr><th scope="row" colspan="3">Total estimado</th><td id="aparatos-total">0</td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="ajustes">
+        <fieldset class="metas campo-ancho"><legend class="calc-paso"><b>2</b> ¿Qué quieres lograr?</legend><div class="metas-opciones" id="metas"></div></fieldset>
+        <p class="calc-paso campo-ancho"><b>3</b> Dónde vives y cuánto pagas</p>
+        <label class="campo">Ciudad
+          <select id="ciudad"></select>
+        </label>
+        <label class="campo">Empresa de energía
+          <select id="operador">
+            <option value="">Escribir la tarifa</option>
+            <option value="864">Enel (Bogotá) · $864</option>
+            <option value="960">EPM (Antioquia) · $960</option>
+            <option value="984">Celsia (Valle y Tolima) · $984</option>
+            <option value="890">Air-e (Atlántico, Magdalena, La Guajira) · $890</option>
+            <option value="879">Afinia (Bolívar, Córdoba, Sucre, Cesar) · $879</option>
+          </select>
+        </label>
+        <label class="campo">Tarifa ($/kWh)
+          <input type="number" id="tarifa" min="200" max="3000" step="10" value="950" inputmode="numeric">
+        </label>
+        <label class="campo campo-ancho"><span class="campo-frase">Ahorrar <output id="pct-salida">70</output> % de la energía</span>
+          <input type="range" id="pct" min="10" max="100" step="5" value="70">
+        </label>
+        <label class="campo">Conexión eléctrica
+          <select id="conexion"><option value="bi">Bifásica 120/240 V (dos fases y neutro)</option><option value="mono">Monofásica 120 V (una fase y neutro)</option><option value="nose">No sé</option></select>
+        </label>
+      </div>
+    </div>
+
+    <div class="calc-salida" aria-live="polite">
+      <div class="salida-top">
+        <p class="salida-grande"><span class="salida-cifra" id="r-paneles">0</span><span class="salida-unidad">paneles de 650 W<small id="r-sistema">—</small></span></p>
+      </div>
+      <dl class="salida-claves">
+        <div><dt>Ahorro</dt><dd id="r-ahorro">$0 al mes</dd></div>
+        <div><dt>Retorno</dt><dd id="r-retorno">—</dd></div>
+        <div><dt>Potencia</dt><dd id="r-kwp">0 kWp</dd></div>
+        <div><dt>Techo</dt><dd id="r-area">0 m²</dd></div>
+        <div class="ancho"><dt>Inversión estimada</dt><dd id="r-inversion">—</dd></div>
+      </dl>
+      <details class="salida-mas"><summary>Ver detalle técnico</summary>
+        <dl class="salida-lista">
+          <div><dt>Consumo base</dt><dd id="r-consumo">0 kWh/mes</dd></div>
+          <div><dt>Producción estimada</dt><dd id="r-prod">0 kWh/mes</dd></div>
+          <div><dt>Inversor sugerido</dt><dd id="r-inv">—</dd></div>
+        </dl>
+      </details>
+      <p class="aviso" id="r-conexion" hidden></p>
+      <a class="boton boton-ambar" id="r-kit" href="#kits">Ver el kit recomendado</a>
+      <p class="nota">Cálculo orientativo; la visita técnica confirma sombras, techo y tablero.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO SE INSTALA (acordeón) ============ -->
+<section class="pasos" id="instalacion">
+  <div class="pasos-cabeza revelar">
+    <h2>Así se instala un on grid</h2>
+    <p>De la medición a la legalización con el operador de red, en cinco etapas. Toca cada franja para abrirla.</p>
+  </div>
+  <div class="acordeon">
+    <button class="etapa abierta" aria-expanded="true">
+      <span class="etapa-nombre">Medimos</span>
+      <span class="etapa-texto">Revisamos doce meses de recibos, las cargas de la casa, el tablero y las sombras del techo a lo largo del día. Con eso definimos cuántos paneles caben y qué porcentaje de ahorro es realista.</span>
+      <img src="fotos/elster-type-r15-electricity-meter.webp" alt="" width="1200" height="1600" loading="lazy">
+    </button>
+    <button class="etapa" aria-expanded="false">
+      <span class="etapa-nombre">Techo</span>
+      <span class="etapa-texto">En techo inclinado, rieles de aluminio con ganchos y abrazaderas dejan los paneles pegados a la teja. En placa o techo plano, una estructura elevada con anclajes les da 10–15° de inclinación y ventilación por debajo.</span>
+      <img src="fotos/solar-array.webp" alt="" width="1024" height="683" loading="lazy">
+    </button>
+    <button class="etapa" aria-expanded="false">
+      <span class="etapa-nombre">Cableado</span>
+      <span class="etapa-texto">Los paneles se unen en serie con conectores MC4 y cable solar de 4–6 mm². Bajan por tubería a una caja DC con breaker y protección contra sobretensiones (DPS).</span>
+      <img src="fotos/nnhs-solar-panels-lift-prep-agr.webp" alt="" width="1600" height="1200" loading="lazy">
+    </button>
+    <button class="etapa" aria-expanded="false">
+      <span class="etapa-nombre">Inversor</span>
+      <span class="etapa-texto">El inversor convierte la corriente continua en 120 o 120/240 V alterna, sincronizada con la red. Sale a una caja AC con breaker y DPS y entra al tablero de la casa con su puesta a tierra.</span>
+      <img src="fotos/tesla-solar-inverter.webp" alt="" width="1600" height="1600" loading="lazy">
+    </button>
+    <button class="etapa" aria-expanded="false">
+      <span class="etapa-nombre">Legalización</span>
+      <span class="etapa-texto">Tramitamos el medidor bidireccional y la conexión ante el operador de red (CREG 174 de 2021) con el dictamen RETIE. Desde ahí, cada kWh que entregas se descuenta de tu factura.</span>
+      <img src="fotos/cat-on-the-rooftops-of-bogota.webp" alt="" width="1600" height="900" loading="lazy">
+    </button>
+  </div>
+</section>
+
+<!-- ============ FIGURA ANATOMY ============ -->
+<section class="figura" id="esquema">
+  <div class="figura-cabeza revelar">
+    <h2>Una casa on grid por dentro</h2>
+    <p>Una casa moderna de dos pisos, abierta piso por piso. Mira la instalación paso a paso (estructura, paneles, cableado DC, inversor Growatt, circuitos y medidor) o deja correr el día: la energía DC (naranja) baja al inversor, su salida (cian) pasa al tablero y llega a las luces, tomas de 110 V, USB y USB-C, tomas de 220 V de los aires, la cocina y la toma exterior. Toca los aparatos para prenderlos y las tomas para verlas de cerca.</p>
+  </div>
+  <div class="figura-marco">
+    <iframe src="figura/casa-ongrid.html" title="Casa on grid interactiva: instalación y flujo de energía" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ============ KITS ============ -->
+<section class="kits" id="kits">
+  <div class="kits-cabeza revelar">
+    <h2>Kits por escenario</h2>
+    <div class="kits-tipos" role="tablist" aria-label="Tipo de sistema">
+      <button role="tab" class="tipo" aria-selected="true" data-tipo="ongrid">On grid</button>
+      <button role="tab" class="tipo" aria-selected="false" data-tipo="offgrid" tabindex="-1">Off grid</button>
+      <button role="tab" class="tipo" aria-selected="false" data-tipo="hibrido" tabindex="-1">Híbrido</button>
+    </div>
+  </div>
+  <div class="kits-campos" id="kits-campos"></div>
+  <div class="comparar">
+    <h3>Compara los nueve kits</h3>
+    <div class="comparar-marco">
+      <table class="comparar-tabla">
+        <thead><tr><th scope="col">Kit</th><th scope="col">Sistema</th><th scope="col">Potencia</th><th scope="col">Baterías</th><th scope="col">Luz en apagón</th><th scope="col">Entrega a la red</th><th scope="col">Monitoreo wifi</th><th scope="col">Precio instalado</th></tr></thead>
+        <tbody id="comparar-cuerpo"></tbody>
+      </table>
+    </div>
+  </div>
+  <p class="kits-nota">Precios estimados en noviembre de 2026: equipos, instalación y, en los sistemas conectados a la red, el trámite ante el operador. Las baterías son LiFePO4 de 51,2 V: las de 100 Ah guardan 5,12 kWh y el Kit Bosque off grid usa cinco de 200 Ah (10,24 kWh cada una), unos 51 kWh en total. Los híbridos se pagan por etapas: primero el inversor y la mitad de los paneles, después el resto y las baterías. Mientras el operador aprueba la conexión, los on grid e híbridos trabajan con exportación cero; los off grid no se conectan a la red y no inyectan energía.</p>
+</section>
+
+<!-- ============ KITS MÓVILES ============ -->
+<section class="moviles" id="moviles">
+  <div class="moviles-cabeza">
+    <h2>Kits móviles</h2>
+    <p>Para acampar, viajar en autocaravana o montar un stand en una feria sin depender de un tomacorriente. Cada kit trae una batería con inversor todo en uno, paneles solares plegables o flexibles y luces cálidas para exterior con protección IP65.</p>
+  </div>
+
+  <ol class="escalera">
+    <li class="peldano pe1">
+      <figure><img src="fotos/movil-luciernaga.svg" alt="Ilustración animada del Kit Luciérnaga: carpa en la montaña, panel plegable de 100 W que de día carga la estación de 300 Wh y de noche enciende la guirnalda, el ventilador USB y la carga de celulares" width="1200" height="900" loading="lazy"></figure>
+      <div class="peldano-texto">
+        <h3>Kit Luciérnaga</h3>
+        <p class="peldano-uso">Solo luz y cargadores</p>
+        <p>Estación de 300 Wh y 300 W, un panel plegable de 100 W y una guirnalda LED cálida de 10 m IP65.</p>
+        <p class="peldano-mueve"><strong>Mueve:</strong> la guirnalda toda la noche, 6 cargas de celular, un router o parlante y un ventilador USB.</p>
+        <p class="peldano-precio">$1.800.000</p>
+      </div>
+    </li>
+    <li class="peldano pe2">
+      <figure><img src="fotos/movil-fogata.svg" alt="Ilustración animada del Kit Fogata: terraza con estación de 1 kWh, dos paneles flexibles de 100 W, nevera portátil, televisor, portátil, ventilador, dos guirnaldas y fogata encendida de noche" width="1200" height="1080" loading="lazy"></figure>
+      <div class="peldano-texto">
+        <h3>Kit Fogata</h3>
+        <p class="peldano-uso">Electrodomésticos de bajo consumo</p>
+        <p>Estación de 1 kWh y 1.800 W con tomas de 110 V, dos paneles flexibles de 100 W y dos guirnaldas de 15 m IP65.</p>
+        <p class="peldano-mueve"><strong>Mueve:</strong> una nevera portátil de 12 V un día entero, un televisor de 32", un portátil, ventiladores y una licuadora unos minutos.</p>
+        <p class="peldano-precio">$5.400.000</p>
+      </div>
+    </li>
+    <li class="peldano pe3">
+      <figure><a class="peldano-ampliar" href="fotos/movil-feria.svg" target="_blank" rel="noopener" aria-label="Ver la ilustración del Kit Feria en grande"><img src="fotos/movil-feria.svg" alt="Ilustración animada del Kit Feria: food truck de jugos con dos paneles flexibles de 200 W en el techo, estación de 2 kWh, mesas bajo cuatro guirnaldas LED y punto de carga de celulares; de noche se encienden las luces" width="1200" height="1260" loading="lazy"><span>Ampliar</span></a></figure>
+      <div class="peldano-texto">
+        <h3>Kit Feria</h3>
+        <p class="peldano-uso">Food trucks, stands y mesas al aire libre · de 6 p. m. a 11 p. m.</p>
+        <p>Estación LiFePO4 de 2 kWh y 2.400 W, dos paneles flexibles de 200 W, cuatro guirnaldas LED cálidas de 15 m IP65, multitoma de exterior y un punto de carga USB para celulares.</p>
+        <p class="peldano-mueve"><strong>Cinco horas de noche:</strong> las guirnaldas (60 W), las luces del food truck (45 W), una nevera de exhibición (60 W en promedio) y cuatro celulares cargando. Son unos 925 Wh, la mitad de la batería; con ese consumo alcanzaría para unas 9 horas. Al día siguiente los paneles la recargan con unos 1,4 kWh de sol.</p>
+        <p class="peldano-precio">$10.400.000</p>
+      </div>
+    </li>
+    <li class="peldano pe4">
+      <figure><img src="fotos/movil-ruta.svg" alt="Ilustración animada del Kit Ruta: autocaravana con cuatro paneles flexibles de 200 W, batería de 3,6 kWh con inversor, nevera, microondas y aire acondicionado, y un toldo con guirnaldas junto al lago" width="1200" height="1440" loading="lazy"></figure>
+      <div class="peldano-texto">
+        <h3>Kit Ruta</h3>
+        <p class="peldano-uso">Autocaravanas y equipos de alto consumo</p>
+        <p>Batería de 3,6 kWh ampliable con inversor de 3.600 W, cuatro paneles flexibles de 200 W pegados al techo del vehículo, instalación y dos guirnaldas IP65.</p>
+        <p class="peldano-mueve"><strong>Mueve:</strong> la nevera, el microondas, una estufa de inducción, la cafetera y un aire acondicionado de 9.000 BTU unas tres horas.</p>
+        <p class="peldano-precio">$19.500.000</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="moviles-partes">
+    <figure class="moviles-foto"><img src="fotos/movil-estacion.svg" alt="Ilustración animada de la batería con inversor todo en uno: pantalla de carga, tomas de 110 V y USB, panel plegable de 200 W, portátil, celular y guirnalda" width="1200" height="900" loading="lazy"></figure>
+    <div>
+      <h3>Por partes</h3>
+      <table class="partes">
+        <tbody>
+          <tr><th scope="row">Batería con inversor todo en uno</th><td>De 300 Wh a 3,6 kWh, tomas de 110 V para electrodomésticos normales, USB y 12 V. Se carga con sol, con la red o con el carro.</td><td class="num">desde $1.200.000</td></tr>
+          <tr><th scope="row">Panel solar flexible</th><td>100 o 200 W, pesa menos de 4 kg y se pega o amarra al techo de la carpa o del vehículo.</td><td class="num">desde $450.000</td></tr>
+          <tr><th scope="row">Panel plegable con maleta</th><td>100 a 200 W con patas; se orienta al sol y se guarda en minutos.</td><td class="num">desde $600.000</td></tr>
+          <tr><th scope="row">Guirnalda de luz cálida IP65</th><td>10 o 15 m de bombillos LED de 2.700 K, resistentes a lluvia y polvo, con conexión en cadena.</td><td class="num">desde $150.000</td></tr>
+          <tr><th scope="row">Multitoma de exterior IP65</th><td>Extensión de 10 m con tapas a prueba de lluvia para conectar electrodomésticos en la carpa.</td><td class="num">desde $120.000</td></tr>
+        </tbody>
+      </table>
+      <p class="nota">Precios estimados de equipos en noviembre de 2026, sin instalación salvo en el Kit Ruta. La autonomía cambia según cuánto se use cada equipo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFICIOS LEY 1715 ============ -->
+<section class="ley" id="beneficios">
+  <div class="ley-cabeza">
+    <h2>Beneficios Ley 1715</h2>
+    <p>La Ley 1715 de 2014, ampliada por la Ley 2099 de 2021, da cuatro beneficios tributarios a quien invierte en energía solar. Se piden a la UPME antes de comprar los equipos.</p>
+  </div>
+  <ol class="ley-lista">
+    <li><span class="ley-cifra">50 %</span><h3>Deducción de renta</h3><p>Hasta la mitad de la inversión se descuenta de la renta líquida, repartida en un máximo de 15 años. Sirve a empresas y a personas que declaran renta.</p></li>
+    <li><span class="ley-cifra">0 %</span><h3>IVA en los equipos</h3><p>Paneles, inversores, baterías y demás equipos certificados por la UPME se compran sin IVA, que hoy es del 19 %.</p></li>
+    <li><span class="ley-cifra">0 %</span><h3>Arancel</h3><p>Los equipos importados para el proyecto quedan exentos del arancel de importación.</p></li>
+    <li><span class="ley-cifra">3 años</span><h3>Depreciación acelerada</h3><p>Una empresa puede depreciar el sistema a una tasa de hasta 33,33 % al año.</p></li>
+  </ol>
+  <p class="ley-nota">Greentech arma la solicitud ante la UPME con la lista de equipos y el diseño. Los tiempos y requisitos los fija la UPME; confírmalos antes de comprar.</p>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS ============ -->
+<section class="trabajo" id="como-trabajamos">
+  <div class="trabajo-cabeza">
+    <h2>Cómo trabajamos</h2>
+    <p>De la primera visita a ver la producción en tu celular. Un kit de tienda trae equipos; un proyecto Greentech llega instalado, legalizado y con soporte.</p>
+  </div>
+  <ol class="ruta">
+    <li><span class="ruta-cuando">Día 1</span><h3>Visita técnica</h3><p>Revisamos techo, sombras, tablero y tus recibos de energía.</p></li>
+    <li><span class="ruta-cuando">3 a 5 días</span><h3>Diseño y propuesta</h3><p>Sistema, equipos, precio cerrado y ahorro esperado por escrito.</p></li>
+    <li><span class="ruta-cuando">1 a 3 días</span><h3>Instalación</h3><p>Estructura, paneles, inversor y protecciones con certificado RETIE.</p></li>
+    <li><span class="ruta-cuando">30 a 90 días</span><h3>Trámite y conexión</h3><p>Solicitud al operador de red por la CREG 174 y cambio a contador bidireccional.</p></li>
+    <li><span class="ruta-cuando">Siempre</span><h3>Monitoreo y soporte</h3><p>Producción en la app, mantenimiento anual y garantías de los equipos.</p></li>
+  </ol>
+  <div class="trabajo-dos">
+    <div class="compara">
+      <h3>Greentech frente a un kit de tienda</h3>
+      <table>
+        <thead><tr><th scope="col">Qué incluye</th><th scope="col">Kit de tienda</th><th scope="col">Greentech</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Paneles, inversor y protecciones</th><td>Sí</td><td>Sí</td></tr>
+          <tr><th scope="row">Estructura según tu techo</th><td>A veces</td><td>Sí</td></tr>
+          <tr><th scope="row">Instalación y puesta a tierra</th><td>No</td><td>Sí</td></tr>
+          <tr><th scope="row">Certificado RETIE</th><td>No</td><td>Sí</td></tr>
+          <tr><th scope="row">Trámite con el operador de red</th><td>No</td><td>Sí, en on grid e híbridos</td></tr>
+          <tr><th scope="row">Solicitud de beneficios Ley 1715</th><td>No</td><td>Sí</td></tr>
+          <tr><th scope="row">Envío</th><td>Aparte</td><td>Incluido</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="financia">
+      <h3>Cómo pagarlo</h3>
+      <ul>
+        <li><strong>Por etapas:</strong> los híbridos se instalan en 2 a 4 pagos, primero el inversor y la mitad de los paneles.</li>
+        <li><strong>Crédito o leasing:</strong> te ayudamos a armar la solicitud para tu banco con la propuesta y el ahorro esperado.</li>
+        <li><strong>Empresas:</strong> líneas de Bancóldex para proyectos de eficiencia energética a través de los bancos.</li>
+        <li><strong>Ley 1715:</strong> recupera hasta el 50 % de la inversión en la declaración de renta.</li>
+      </ul>
+      <p class="nota">Las condiciones de cada crédito las fija la entidad financiera.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LÍNEA EMPRESARIAL ============ -->
+<section class="empresas" id="empresas">
+  <div class="empresas-cabeza">
+    <figure class="empresas-foto"><img src="fotos/fabrica-techo-solar.webp" alt="Techo de una fábrica cubierto de paneles solares, con la ciudad al fondo" width="1400" height="1050" loading="lazy"></figure>
+    <div class="empresas-texto">
+      <h2>Línea empresarial</h2>
+      <p>Proyectos de 30 kW a más de 1 MW para mover máquinas, frío industrial y aire acondicionado con energía del sol. Ingeniería, trámites de la Ley 1715 y conexión ante el operador de red.</p>
+      <a class="boton boton-ambar" href="#contacto">Pedir un estudio de ingeniería</a>
+    </div>
+  </div>
+  <ol class="lineas">
+    <li><h3>Techos industriales y bodegas</h3><p>Inversores trifásicos de 30 a 200 kW a 208, 220 o 440 V sobre cubiertas metálicas o de fibrocemento. El consumo de día de una fábrica coincide con las horas de sol.</p></li>
+    <li><h3>Grandes superficies</h3><p>Centros comerciales, supermercados y clínicas: cubiertas y parqueaderos con techo solar que dan sombra a los carros y bajan la factura de aire acondicionado.</p></li>
+    <li><h3>Granjas solares</h3><p>Plantas en suelo con estructura fija o seguidores de un eje para vender energía o abastecer varias sedes.</p></li>
+    <li><h3>Respaldo de equipos críticos</h3><p>Híbridos trifásicos con baterías y transferencia automática para cuartos fríos, servidores y líneas de producción que no pueden parar.</p></li>
+  </ol>
+
+  <div class="electro">
+    <div class="electro-texto">
+      <h3 class="electro-titulo">Electrolineras</h3>
+      <p class="electro-lead">Cargadores para carros eléctricos alimentados con paneles solares, con el modelo de inversión de Synergy: tú pones el lugar, ellos ponen los equipos.</p>
+      <ol class="electro-pasos">
+        <li><span>Tu sitio</span>Gasolinera tradicional, parqueadero de centro comercial o cualquier lugar con alto flujo de carros eléctricos.</li>
+        <li><span>Tu espacio</span>Una cubierta, estructura o terreno para instalar de 60 a 90 paneles solares.</li>
+        <li><span>Synergy invierte</span>Pone los cargadores, los paneles, los inversores y la instalación.</li>
+        <li><span>Tú recibes</span>Una rentabilidad cercana al 25 %, según el modelo que anuncia Synergy. Solo garantizas el flujo de vehículos y el espacio.</li>
+      </ol>
+      <p class="nota">Las condiciones y la rentabilidad las fija Synergy en cada contrato. Greentech evalúa el sitio y el espacio para los paneles.</p>
+    </div>
+    <figure class="electro-foto electro-animada"><img src="fotos/escena-empresas.svg" alt="Ilustración animada de una nave industrial con paneles solares en la cubierta, inversores trifásicos, transformador, contenedor de baterías y una electrolinera bajo marquesina solar con cuatro cargadores; un carro eléctrico llega a cargar" width="820" height="540" loading="lazy"><figcaption><ol class="escena-partes"><li>Paneles en la cubierta</li><li>Inversores trifásicos</li><li>Transformador y medida</li><li>Contenedor de baterías</li><li>Marquesina solar</li><li>Cargadores para carros</li></ol></figcaption></figure>
+    <style>.electro-animada{background:#11241A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:clamp(14px,2vw,28px)}.electro-animada .escena-partes{margin:0;max-width:none;grid-template-columns:repeat(3,auto);justify-content:center}@media (max-width:700px){.electro-animada .escena-partes{grid-template-columns:1fr 1fr}}.electro .electro-animada img{width:100%;height:auto;min-height:0;object-fit:contain;aspect-ratio:820/540}</style>
+  </div>
+
+  <ol class="proceso">
+    <li>Estudio de consumo con 12 recibos y medición de la curva de carga</li>
+    <li>Diseño, simulación de producción y retorno</li>
+    <li>Solicitud de beneficios Ley 1715 ante la UPME</li>
+    <li>Instalación con certificado RETIE</li>
+    <li>Conexión CREG 174, monitoreo y mantenimiento</li>
+  </ol>
+</section>
+
+<!-- ============ OTRAS TECNOLOGÍAS ============ -->
+<section class="otras" id="otras-tecnologias">
+  <div class="otras-cabeza">
+    <h2>Otras tecnologías</h2>
+    <p>Además del sol en el techo, hay energía en el agua que cae, en el viento y en lo que mueve tu casa o tu negocio. Estas son las soluciones que estudiamos contigo según el sitio y el uso.</p>
+  </div>
+  <ol class="otras-lista">
+    <li><span class="otras-tag">Agua</span><h3>Micro generadores hidráulicos</h3><p>Turbinas Pelton, Turgo o de flujo cruzado para fincas con una quebrada: de 0,5 a 100 kW que generan día y noche. Necesitan caída y caudal suficientes, y el uso del agua requiere concesión ante la corporación autónoma regional.</p></li>
+    <li><span class="otras-tag">Viento</span><h3>Generadores eólicos</h3><p>Aerogeneradores pequeños de 1 a 10 kW para sitios con viento constante, como La Guajira, la costa Caribe o zonas altas. Se combinan con paneles en sistemas híbridos off grid: el viento suele soplar cuando no hay sol.</p></li>
+    <li><span class="otras-tag">Movilidad</span><h3>Hidrógeno automotriz</h3><p>Hidrógeno verde producido con electricidad solar por electrólisis, para vehículos con celda de combustible y flotas piloto. Asesoramos proyectos de producción y uso; los kits caseros HHO que prometen ahorrar gasolina no tienen ahorro comprobado.</p></li>
+    <li><span class="otras-tag">Agua</span><h3>Bombeo solar</h3><p>Bombas sumergibles o de superficie con variador solar, sin baterías: bombean de día a un tanque elevado que reparte el agua por gravedad. Para riego, abrevaderos, pozos profundos y acueductos veredales.</p></li>
+    <li><span class="otras-tag">Frío</span><h3>Refrigeración solar</h3><p>Neveras y vitrinas de corriente continua de alta eficiencia y cuartos fríos alimentados con paneles, para tiendas rurales, cultivos, leche y medicamentos o vacunas lejos de la red.</p></li>
+    <li><span class="otras-tag">Frío</span><h3>Congelación solar</h3><p>Congeladores DC y placas eutécticas que acumulan frío de día y lo sueltan de noche, para pesca artesanal, heladerías y cadenas de frío sin baterías grandes.</p></li>
+    <li><span class="otras-tag">Techo</span><h3>Tejas solares</h3><p>Tejas y cubiertas con celdas integradas que reemplazan la teja y generan energía sin paneles a la vista. Cuestan más por vatio que los paneles; encajan en casas nuevas, remodelaciones de cubierta y fachadas.</p></li>
+    <li><span class="otras-tag">Movilidad</span><h3>Automóviles eléctricos</h3><p>Cargador de pared de 7 kW en casa o en el negocio y un sistema solar que cubra los 15 a 20 kWh que gasta un carro cada 100 km. Te ayudamos con los beneficios de la Ley 1964 de 2019.</p></li>
+    <li><span class="otras-tag">Movilidad</span><h3>Motocicletas eléctricas</h3><p>Gastan de 2 a 4 kWh cada 100 km y se cargan en una toma normal de 110 V. Un par de paneles cubre el recorrido diario, también para flotas de domicilios.</p></li>
+  </ol>
+  <div class="envios">
+    <div class="envios-cabeza">
+      <h3>Kits con envío nacional</h3>
+      <p>Armados en Neiva y despachados a todo el país. Los paneles viajan de canto en guacal de madera; las baterías de litio van aparte, con un transportador habilitado para carga peligrosa.</p>
+    </div>
+    <ol class="envios-lista">
+      <li><span class="otras-tag">Bombeo</span><h4>Kit Abrevadero</h4><p>Bomba solar de 1/2 HP (hasta 24 m, unos 50 L/min), 2 paneles de 650 W, estructura, cable, flotador y protecciones. Sin baterías: bombea de día a un tanque.</p><p class="envios-precio">≈ $3,2 a $3,7 millones</p></li>
+      <li><span class="otras-tag">Bombeo</span><h4>Kit Pozo 40 m</h4><p>Bomba solar de 1 HP (hasta 38 m, unos 55 L/min), 4 paneles de 650 W, estructura, cable sumergible y protecciones. La tubería se ajusta a la profundidad del pozo.</p><p class="envios-precio">≈ $5,4 a $6,3 millones</p></li>
+      <li><span class="otras-tag">Movilidad</span><h4>Kit Carga Moto Solar</h4><p>2 paneles de 650 W, batería LiFePO4 de 5,12 kWh e inversor híbrido de 48 V: carga una moto eléctrica de noche con la energía guardada de día.</p><p class="envios-precio">≈ $8,4 a $9,8 millones</p></li>
+      <li><span class="otras-tag">Movilidad</span><h4>Kit Carro Solar 7 kW</h4><p>Cargador de pared de 7 kW con certificado RETIE, 4 paneles de 650 W e inversor on grid: cubre unos 40 km de recorrido diario con sol. Instalación aparte.</p><p class="envios-precio">≈ $6,9 a $8,5 millones</p></li>
+      <li><span class="otras-tag">Carga rápida</span><h4>Kit Carga Rápida Solar Moto Eléctrica</h4><p>4 paneles de 650 W, inversor híbrido de 6 kW, batería LiFePO4 de 5,12 kWh y cargador de 3,3 kW: lleva una batería de moto de 4 kWh al 80 % en cerca de una hora, de día o de noche. Para domicilios y motos de trabajo.</p><p class="envios-precio">≈ $19 a $22 millones</p></li>
+      <li><span class="otras-tag">Carga rápida</span><h4>Kit Carga Rápida Auto Eléctrico</h4><p>Cargador trifásico de 22 kW, 12 paneles de 650 W e inversor trifásico on grid de 10 kW: unos 100 km de autonomía en menos de una hora si el carro acepta 22 kW (con 11 kW, cerca de dos horas). Requiere red trifásica; instalación aparte.</p><p class="envios-precio">≈ $27 a $32 millones</p></li>
+      <li><span class="otras-tag">Frío</span><h4>Kit Nevera Solar Portátil</h4><p>Nevera de compresor de 47 L a 12/24 V, 2 paneles de 650 W, controlador MPPT y batería LiFePO4 de 12,8 V. Para fincas, pesca, ferias y viajes.</p><p class="envios-precio">≈ $5,2 a $6,7 millones</p></li>
+    </ol>
+    <p class="envios-nota"><strong>Bajo cotización:</strong> bombeo para pozos profundos, frío para tienda rural, congelación para pesca o heladería, cuartos fríos, micro generadores hidráulicos (requieren concesión de aguas), generadores eólicos con medición de viento, flotas de domicilios y kits educativos de hidrógeno solar. Precios estimados en noviembre de 2026, con IVA y sin envío; el envío se cotiza según la ciudad. El IVA de cargadores y baterías para vehículos eléctricos puede pasar del 5 % al 19 % si el Congreso aprueba la reforma en trámite.</p>
+  </div>
+  <a class="boton boton-ambar" href="#contacto">Consultar un proyecto</a>
+</section>
+
+<!-- ============ PREGUNTAS ============ -->
+<section class="preguntas" id="preguntas">
+  <h2 class="revelar">Preguntas frecuentes</h2>
+  <div class="cajon">
+    <details class="tarjeta t1" open><summary><span class="t-tema">Baterías</span><span class="t-pregunta">¿Un sistema on grid necesita baterías?</span></summary>
+      <p>No. De día la casa usa la energía de los paneles y el sobrante va a la red; de noche compras a la red como siempre. Si quieres respaldo en apagones, el paso siguiente es un inversor híbrido con baterías.</p></details>
+    <details class="tarjeta t2"><summary><span class="t-tema">Apagones</span><span class="t-pregunta">¿Qué pasa con un on grid si se va la luz?</span></summary>
+      <p>El inversor se apaga por seguridad (anti-isla) para no energizar la red mientras los técnicos trabajan. Por eso, si los cortes son frecuentes en tu zona, conviene un sistema híbrido.</p></details>
+    <details class="tarjeta t3"><summary><span class="t-tema">Excedentes</span><span class="t-pregunta">¿Me pagan la energía que entrego a la red?</span></summary>
+      <p>Con la CREG 174 de 2021, los excedentes se cruzan con lo que compras en el mes. Lo que sobra después de ese cruce se liquida al precio de bolsa, que es más bajo que la tarifa; por eso dimensionamos para tu consumo, no para vender.</p></details>
+    <details class="tarjeta t4"><summary><span class="t-tema">Voltaje</span><span class="t-pregunta">¿Sirve para aires de 220 V?</span></summary>
+      <p>Sí, con salida 120/240 V bifásica, como la de todos los kits. En el Kit Semilla on grid, los dos microinversores de 2,25 kW entregan 240 V entre las dos fases, así que la casa necesita acometida bifásica.</p></details>
+    <details class="tarjeta t5"><summary><span class="t-tema">Garantía</span><span class="t-pregunta">¿Cuánto duran los equipos?</span></summary>
+      <p>Los paneles premium tienen 12 a 25 años de garantía de producto y 25 a 30 de producción; los inversores, entre 5 y 12 años según la marca, y las baterías LiFePO4, 5 a 10 años o unos 6.000 ciclos.</p></details>
+    <details class="tarjeta t6"><summary><span class="t-tema">Mantenimiento</span><span class="t-pregunta">¿Qué mantenimiento necesitan?</span></summary>
+      <p>Lavar los paneles con agua y un cepillo suave dos o tres veces al año, más en zonas de polvo, y revisar apriete de conexiones y protecciones una vez al año. El inversor avisa por la app si algo falla.</p></details>
+    <details class="tarjeta t7"><summary><span class="t-tema">Exportación cero</span><span class="t-pregunta">¿Puedo instalar antes de tener contador bidireccional?</span></summary>
+      <p>Sí, en on grid e híbridos. Se instala un sensor de corriente (CT) o un medidor inteligente en la entrada de la red y se activa la exportación cero: el inversor solo produce lo que la casa consume y lo que cargan las baterías, sin enviar energía al contador viejo. Aun sin inyectar, hay que avisar al operador de red que la casa tiene autogeneración. Cuando el operador aprueba la conexión por la CREG 174 e instala el contador bidireccional, se quita el límite y los excedentes se cruzan en tu factura.</p></details>
+    <details class="tarjeta t9"><summary><span class="t-tema">Tu decisión</span><span class="t-pregunta">¿Y si prefiero quedarme en exportación cero sin hacer el trámite?</span></summary>
+      <p>Puedes decidirlo tú: el sensor o el medidor de exportación cero queda instalado de forma permanente, el sistema solo cubre tu consumo y te ahorras el trámite ($1,5 millones menos en el kit). Asumes estos riesgos: el operador puede detectar la instalación en una revisión y exigir legalizarla, con posibles sanciones o desconexión; si el limitador falla y el contador viejo registra energía de regreso, puede leerse como una irregularidad; no recibes pago por excedentes, y algunos seguros piden la instalación registrada. Te lo dejamos por escrito en la propuesta para que decidas con la información completa.</p></details>
+    <details class="tarjeta t8"><summary><span class="t-tema">Off grid</span><span class="t-pregunta">¿Un off grid necesita ese sensor o contador?</span></summary>
+      <p>No. Un off grid no tiene salida hacia la red: aunque la red cargue las baterías por la entrada del inversor, la energía solo entra y nunca sale, así que no hace falta sensor de exportación cero, contador bidireccional ni trámite de excedentes. Lo que sí necesita es un tablero con transferencia, para que la red y el inversor nunca queden conectados en paralelo. Si después quieres entregar excedentes, el paso es cambiar a un inversor híbrido certificado.</p></details>
+  </div>
+</section>
+
+<!-- ============ CALCULA TU PROYECTO ============ -->
+<section class="contacto" id="contacto">
+  <form class="cupon proyecto" id="cupon" novalidate>
+    <div class="cupon-izq">
+      <div>
+        <h2>Calcula tu proyecto</h2>
+        <p>Cuéntanos cómo es tu casa o tu negocio y te decimos al instante si te sirve uno de nuestros kits o si necesitas un proyecto diseñado a tu medida.</p>
+      </div>
+      <div class="veredicto" id="veredicto" aria-live="polite"></div>
+    </div>
+    <div class="cupon-der">
+      <div class="pr-fila">
+        <label class="pr-campo">Consumo al mes (kWh)
+          <input id="p-kwh" name="kwh" type="number" min="20" max="50000" step="1" inputmode="numeric" value="420">
+        </label>
+        <button type="button" class="pr-usar" id="p-usar">Usar el de la calculadora</button>
+      </div>
+      <div class="pr-fila">
+        <label class="pr-campo">Ciudad<select id="p-ciudad" name="ciudad"></select></label>
+        <label class="pr-campo">Inmueble
+          <select id="p-inmueble" name="inmueble"><option value="casa">Casa</option><option value="apto">Apartamento</option><option value="negocio">Negocio o local</option><option value="finca">Finca o cabaña</option><option value="industria">Industria o bodega</option><option value="electrolinera">Electrolinera</option></select>
+        </label>
+      </div>
+      <div class="pr-fila">
+        <label class="pr-campo">Sistema
+          <select id="p-sistema" name="sistema"><option value="ongrid">On grid · conectado a la red</option><option value="hibrido">Híbrido · red y baterías</option><option value="offgrid">Off grid · sin red</option><option value="nose">No sé todavía</option></select>
+        </label>
+        <label class="pr-campo">Conexión eléctrica
+          <select id="p-red" name="red"><option value="bi">Bifásica 120/240 V</option><option value="mono">Monofásica 120 V</option><option value="tri">Trifásica</option><option value="sin">No tengo red</option></select>
+        </label>
+      </div>
+      <fieldset class="pr-checks">
+        <legend>Además tengo…</legend>
+        <label><input type="checkbox" name="aires"> Aires acondicionados</label>
+        <label><input type="checkbox" name="motores"> Motores o bombas grandes</label>
+        <label><input type="checkbox" name="especiales"> Equipos médicos o de laboratorio</label>
+        <label><input type="checkbox" name="techo"> Techo con sombra o difícil</label>
+      </fieldset>
+      <button class="cupon-enviar" type="submit">Solicitar este proyecto</button>
+      <p class="pr-nota" id="p-nota">En el siguiente paso confirmas la solicitud: ubicación, fotos del sitio, presupuesto y tus datos de contacto.</p>
+    </div>
+  </form>
+  <dialog class="solicitud" id="solicitud" aria-labelledby="sol-tit">
+    <form method="dialog" class="sol-form" id="sol-form" novalidate>
+      <div class="sol-cabeza">
+        <h2 id="sol-tit">Confirma tu solicitud de servicio</h2>
+        <button type="button" class="sol-x" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <section class="sol-bloque">
+        <h3>1 · Cálculo del proyecto <span>se anexa automáticamente</span></h3>
+        <div class="sol-calculo" id="sol-calculo"></div>
+      </section>
+      <section class="sol-bloque">
+        <h3>2 · Ubicación del proyecto</h3>
+        <div class="sol-fila">
+          <label class="sol-campo">Municipio y departamento<input name="municipio" autocomplete="address-level2" required></label>
+          <label class="sol-campo">Dirección, barrio o vereda<input name="direccion" autocomplete="street-address"></label>
+        </div>
+        <button type="button" class="sol-sec" id="sol-gps">📍 Usar mi ubicación actual</button>
+        <p class="sol-ayuda" id="sol-gps-txt"></p>
+      </section>
+      <section class="sol-bloque">
+        <h3>3 · Servicio</h3>
+        <div class="sol-radios" role="radiogroup" aria-label="Tipo de servicio">
+          <label><input type="radio" name="instalacion" value="Con instalación" checked> <b>Con instalación</b><span>Equipos, montaje, cableado, protecciones y trámite ante el operador de red</span></label>
+          <label><input type="radio" name="instalacion" value="Sin instalación (solo equipos)"> <b>Sin instalación</b><span>Solo suministro de equipos; la instalación la hace tu electricista</span></label>
+        </div>
+        <label class="sol-campo">Presupuesto aproximado
+          <select name="presupuesto"><option>Aún no lo sé</option><option>Menos de $10 millones</option><option>$10 a $20 millones</option><option>$20 a $40 millones</option><option>$40 a $80 millones</option><option>Más de $80 millones</option></select>
+        </label>
+        <label class="sol-campo">Especificaciones adicionales
+          <textarea name="especificaciones" rows="3" placeholder="Tipo de techo, horario de mayor consumo, cortes de luz frecuentes, equipos especiales, fecha deseada…"></textarea>
+        </label>
+      </section>
+      <section class="sol-bloque">
+        <h3>4 · Fotos del sitio</h3>
+        <p class="sol-ayuda">Techo o terraza, tablero eléctrico, medidor y recibo de energía. Hasta 8 fotos.</p>
+        <label class="sol-fotos-btn"><input type="file" id="sol-fotos" accept="image/*" multiple> Agregar fotos</label>
+        <div class="sol-miniaturas" id="sol-miniaturas"></div>
+      </section>
+      <section class="sol-bloque">
+        <h3>5 · Datos de contacto</h3>
+        <div class="sol-fila">
+          <label class="sol-campo">Nombre completo<input name="nombre" autocomplete="name" required></label>
+          <label class="sol-campo">Número de WhatsApp o celular<input name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+57 300 000 0000"></label>
+        </div>
+        <label class="sol-campo">Correo electrónico<input name="correo" type="email" autocomplete="email" required placeholder="nombre@correo.com"></label>
+        <label class="sol-check"><input type="checkbox" name="datos" required> Autorizo a Greentech a usar estos datos para responder mi solicitud (Ley 1581 de 2012).</label>
+      </section>
+      <p class="sol-error" id="sol-error" role="alert"></p>
+      <div class="sol-acciones">
+        <button type="button" class="sol-sec" data-cerrar>Volver</button>
+        <button type="submit" class="cupon-enviar sol-ok">Confirmar solicitud</button>
+      </div>
+      <div class="sol-listo" id="sol-listo" hidden>
+        <p class="sol-num" id="sol-num"></p>
+        <p>Abrimos WhatsApp con tu solicitud y el cálculo. <b id="sol-fotos-aviso">Adjunta tus fotos en ese mismo chat.</b></p>
+        <div class="sol-acciones">
+          <button type="button" class="cupon-enviar" id="sol-compartir" hidden>Compartir solicitud con fotos</button>
+          <a class="sol-sec" id="sol-wa" target="_blank" rel="noopener">Abrir WhatsApp de nuevo</a>
+        </div>
+      </div>
+    </form>
+  </dialog>
+</section>
+</main>
+
+<footer class="pie">
+  <img class="pie-logo" src="logo/greentech-logo-3d-oscuro.svg" alt="Green GTC Tech · Energía verde" width="1021" height="430" loading="lazy">
+  <p class="pie-marca" id="pie-marca" aria-label="Greentech"></p>
+  <div class="pie-columnas">
+    <nav aria-label="Secciones"><a href="#sistemas">Sistemas</a><a href="#calculadora">Calculadora</a><a href="#instalacion">Instalación</a><a href="#esquema">Esquema</a></nav>
+    <nav aria-label="Más"><a href="#kits">Kits</a><a href="#moviles">Móviles</a><a href="#beneficios">Ley 1715</a><a href="#como-trabajamos">Cómo trabajamos</a><a href="#empresas">Empresas</a><a href="#otras-tecnologias">Otras tecnologías</a><a href="#preguntas">Preguntas</a><a href="#contacto">Tu proyecto</a></nav>
+  </div>
+  <div class="pie-final"><span>© 2026 Greentech · Colombia</span><a class="boton boton-chico" href="#inicio">Volver arriba</a></div>
+  <p class="pie-creditos" id="creditos">Fotos: Infrogmation of New Orleans (CC BY-SA 3.0), ArnoldReinhold (CC BY-SA 4.0), rawpixel (CC0), Zuzu (CC BY-SA 3.0), RickyCourtney (CC BY-SA 4.0), Quijanofel (CC BY-SA 4.0), HokuroN (CC BY-SA 4.0), Joseolgon (CC BY-SA 4.0), Ashish Gupta (CC BY 2.0), Budenhob (CC BY-SA 4.0), Tony Webster (CC BY-SA 2.0), Stephan Ridgway (CC BY 2.0), LJamesCPH (CC BY-SA 4.0) y otros autores vía Wikimedia Commons y Openverse.</p>
+</footer>
+
+<a class="wa-flotante" href="https://wa.me/573143103824?text=Hola%20Greentech%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20solar" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp al +57 314 310 3824">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.6 7.6c.3-.6.6-.6.9-.6h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.4.7 1 1.4 1.6 1.9.6.5 1.2.8 1.6 1 .2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.4 0 .3 0 1.1-.5 1.6-.5.5-1.4.9-2.1.8-1.2-.1-3-.8-4.6-2.2-1.6-1.5-2.6-3.3-2.8-4.4-.2-1 .2-1.8.5-2.1z" fill="currentColor"/></svg>
+  <span>WhatsApp</span>
+</a>
+<style>
+.wa-flotante{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:1000;display:inline-flex;align-items:center;gap:8px;padding:12px 18px 12px 14px;border-radius:999px;background:#0B6B3A;color:#fff;font:700 15px/1 Manrope,system-ui,sans-serif;text-decoration:none;transition:transform .2s ease}
+.wa-flotante svg{width:26px;height:26px;flex:none}
+.wa-flotante:hover{transform:translateY(-2px);}
+.wa-flotante:focus-visible{outline:3px solid #0F1D17;outline-offset:3px}
+@media (max-width:600px){.wa-flotante{padding:14px}.wa-flotante span{display:none}}
+@media (prefers-reduced-motion:reduce){.wa-flotante{transition:none}}
+</style>
+<script src="js/catalogo.js"></script>
+<script src="js/app.js"></script>
+<script src="js/vitrina.js"></script>
+<script src="js/extras.js"></script>
+</body>
+</html>
+
+</body></html>
