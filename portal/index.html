@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greentech · Portal del equipo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--suelo:#EEF1EA;--tinta:#0F1D17;--suave:#4A5A50;--verde:#1F7A4C;--verde-5:#D4EEDB;--lima:#B8E04A;--ambar:#F5A524;--borde:#D3DAD0;--panel:#FFFFFF;--rojo:#B3261E;
+--f-disp:"Unbounded",system-ui,sans-serif;--f-txt:"Manrope",system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--suelo);color:var(--tinta);font:400 15px/1.5 var(--f-txt);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--verde);font-weight:700}
+[hidden]{display:none!important}
+.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.lateral{background:var(--tinta);color:var(--suelo);padding:20px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;overflow:auto}
+.marca{display:flex;align-items:center;gap:10px;font:700 17px/1 var(--f-disp);padding:6px 10px 18px}
+.marca i{width:14px;height:14px;background:var(--lima);display:block;clip-path:polygon(4px 0,10px 0,14px 4px,14px 10px,10px 14px,4px 14px,0 10px,0 4px)}
+.grupo{font-size:12px;font-weight:700;color:#9FB3A6;padding:16px 10px 6px}
+.enlace{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:none;border:0;padding:9px 10px;border-radius:6px;cursor:pointer;color:#E6ECE7;font-weight:600;font-size:14px}
+.enlace:hover{background:#1C3127}
+.enlace[aria-current=page]{background:var(--lima);color:var(--tinta)}
+.enlace .n{font-size:12px;font-weight:700;opacity:.75;font-variant-numeric:tabular-nums}
+.sub{padding-left:22px;font-weight:500}
+.quien{margin-top:auto;padding:16px 10px 4px;font-size:13px;color:#B9C8BE;border-top:1px solid #23392E}
+.principal{padding:28px clamp(16px,3vw,40px) 64px;min-width:0}
+.cabeza{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.cabeza h1{font:700 26px/1.15 var(--f-disp);margin:0}
+.cabeza p{margin:6px 0 0;color:var(--suave);max-width:70ch}
+.boton{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:0;border-radius:6px;background:var(--verde);color:#fff;font-weight:700;cursor:pointer;text-decoration:none}
+.boton.sec{background:var(--panel);color:var(--tinta);border:1px solid var(--borde)}
+.boton.peligro{background:var(--rojo)}
+.herramientas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.herramientas input,.herramientas select{min-height:40px;padding:0 12px;border:1px solid var(--borde);border-radius:6px;background:var(--panel)}
+.herramientas input{flex:1;min-width:220px}
+.marco{background:var(--panel);border:1px solid var(--borde);border-radius:8px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #E6EAE3;vertical-align:top}
+thead th{font-size:12px;color:var(--suave);font-weight:700;background:#F7F9F5;position:sticky;top:0}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+tr:hover td{background:#FAFBF8}
+.chip{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:700;background:var(--verde-5);color:var(--verde);white-space:nowrap}
+.chip.online{background:#E4EEFB;color:#1F4E8C}.chip.estimado{background:#FCEFD6;color:#8A5A00}.chip.cotizacion{background:var(--verde-5);color:var(--verde)}
+.chip.abierta,.chip.nueva,.chip.programada{background:#FCEFD6;color:#8A5A00}.chip.cerrada,.chip.terminada,.chip.aceptada,.chip.activo{background:var(--verde-5);color:var(--verde)}
+.acciones{white-space:nowrap}
+.acciones button{background:none;border:0;color:var(--verde);font-weight:700;cursor:pointer;padding:2px 6px}
+.vacio{padding:40px 20px;text-align:center;color:var(--suave)}
+.aviso{background:#FCEFD6;border:1px solid #F2D28F;color:#5C3D00;padding:12px 14px;border-radius:8px;margin-bottom:16px}
+.tarjetas{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.tarjeta{background:var(--panel);border:1px solid var(--borde);border-radius:8px;padding:16px;cursor:pointer;text-align:left}
+.tarjeta b{display:block;font:700 30px/1 var(--f-disp);margin:8px 0 4px;font-variant-numeric:tabular-nums}
+.tarjeta span{color:var(--suave);font-size:13px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.caja{background:var(--panel);border:1px solid var(--borde);border-radius:8px;padding:16px}
+.caja h2{font:700 15px/1.2 var(--f-disp);margin:0 0 12px}
+.lista-mini{list-style:none;margin:0;padding:0}
+.lista-mini li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #EDF0EA;font-size:14px}
+dialog{border:0;border-radius:10px;padding:0;width:min(640px,94vw);box-shadow:0 20px 60px rgba(15,29,23,.25)}
+dialog::backdrop{background:rgba(15,29,23,.45)}
+.form{padding:22px}
+.form h2{font:700 18px/1.2 var(--f-disp);margin:0 0 16px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.campos label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:700}
+.campos .ancho{grid-column:1/-1}
+.campos input,.campos select,.campos textarea{padding:9px 10px;border:1px solid var(--borde);border-radius:6px;background:#fff;font-weight:500;font-size:14px}
+.campos textarea{min-height:80px;resize:vertical}
+.pie-form{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}
+.calendario{background:var(--panel);border:1px solid var(--borde);border-radius:8px}
+.cal-cabeza{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--borde)}
+.cal-cabeza h2{font:700 16px/1 var(--f-disp);margin:0;text-transform:capitalize}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-dia{min-height:104px;border-right:1px solid #EDF0EA;border-bottom:1px solid #EDF0EA;padding:6px;font-size:12px}
+.cal-dia:nth-child(7n){border-right:0}
+.cal-dia.fuera{background:#F7F9F5;color:#9AA79F}
+.cal-dia.hoy .d{background:var(--tinta);color:#fff;border-radius:999px;padding:0 6px}
+.cal-dia .d{font-weight:800;display:inline-block;margin-bottom:4px}
+.cal-sem{font-size:12px;font-weight:700;color:var(--suave);padding:8px 6px;border-bottom:1px solid var(--borde)}
+.ev{display:block;width:100%;text-align:left;border:0;border-radius:4px;padding:2px 6px;margin-bottom:3px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev.instalacion{background:var(--verde-5);color:var(--verde)}.ev.evento{background:#FCEFD6;color:#8A5A00}
+.leyenda{display:flex;gap:14px;font-size:13px;color:var(--suave);margin:10px 2px}
+.leyenda span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.leyenda .li::before{background:var(--verde-5)}.leyenda .le::before{background:#FCEFD6}
+.correo{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.correo a{display:block;background:var(--panel);border:1px solid var(--borde);border-radius:8px;padding:18px;text-decoration:none;color:var(--tinta)}
+.correo a b{display:block;font:700 15px/1.2 var(--f-disp);margin-bottom:6px}
+.correo a span{color:var(--suave);font-size:13px;font-weight:500}
+.cat{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:20px;align-items:start}
+.cat-listas{display:grid;gap:18px}
+.cat-grupo{background:var(--panel);border:1px solid var(--borde);border-radius:8px;padding:8px}
+.cat-grupo h2{font:700 14px/1.2 var(--f-disp);margin:6px 8px 8px}
+.cat-fila{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;border:0;background:none;text-align:left;padding:8px;border-radius:6px;cursor:pointer;font-weight:600;font-size:14px}
+.cat-fila:hover{background:#F2F5EF}
+.cat-fila[aria-current=true]{background:var(--verde-5);color:var(--verde)}
+.cat-fila small{color:var(--suave);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ficha{position:sticky;top:20px;background:var(--panel);border:1px solid var(--borde);border-radius:8px;padding:20px}
+.ficha h2{font:700 20px/1.2 var(--f-disp);margin:0 0 4px}
+.ficha-tipo{color:var(--verde);font-weight:700;margin:0 0 12px}
+.ficha table{margin:8px 0}
+.ficha th{width:42%;color:var(--suave);font-weight:600;background:none;position:static}
+.ficha ul{margin:10px 0 0;padding-left:18px}
+.ficha li{margin:4px 0}
+.sello{margin:0 0 6px;padding:8px 12px;border-radius:6px;background:var(--verde);color:#fff;font-weight:700;font-size:13px}
+.sello-off{background:var(--tinta)}.sello-falta{background:var(--ambar);color:var(--tinta)}
+.cat-det{padding:4px 8px 12px}
+.menu-movil{display:none}
+.acceso{min-height:100vh;display:grid;place-items:center;padding:24px 16px;background:var(--tinta)}
+.acceso[hidden]{display:none!important}
+.acceso-caja{width:min(400px,100%);background:var(--panel);border-radius:12px;padding:28px 24px}
+.acceso-caja .marca{color:var(--tinta);padding:0 0 18px}
+.acceso-caja h1{font:700 20px/1.2 var(--f-disp);margin:0 0 6px}
+.acceso-caja p{color:var(--suave);margin:0 0 16px;font-size:14px}
+.acceso-caja label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:700;margin-bottom:12px}
+.acceso-caja input{padding:10px 12px;border:1px solid var(--borde);border-radius:6px;font-size:15px;font-weight:500}
+.acceso-caja .boton{width:100%;justify-content:center;margin-top:4px}
+.acceso-caja .enlace-txt{display:block;margin-top:14px;background:none;border:0;padding:0;color:var(--verde);font-weight:700;cursor:pointer;font-size:14px}
+.acceso-msg{padding:10px 12px;border-radius:6px;font-size:14px;margin-bottom:12px;background:#FCEFD6;color:#5C3D00}
+.acceso-msg.ok{background:var(--verde-5);color:var(--verde)}
+.volver-web{display:block;text-align:center;margin-top:18px;font-size:13px;color:var(--suave)}
+.salir{display:block;margin-top:8px;background:none;border:0;padding:0;color:var(--lima);font-weight:700;cursor:pointer;font-size:13px}
+a.enlace{text-decoration:none}
+.rol select{padding:6px 8px;border:1px solid var(--borde);border-radius:6px;background:#fff}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .lateral{position:fixed;inset:0 30% 0 0;z-index:20;transform:translateX(-100%);transition:transform .2s;height:auto}
+  .lateral.abierta{transform:none}
+  .menu-movil{display:flex;align-items:center;justify-content:space-between;background:var(--tinta);color:var(--suelo);padding:12px 16px;position:sticky;top:0;z-index:10}
+  .menu-movil button{background:var(--lima);border:0;border-radius:6px;padding:8px 12px;font-weight:800}
+  .cat{grid-template-columns:1fr} .cat>.ficha{display:none}
+  .tarjetas{grid-template-columns:1fr 1fr}.dos,.correo{grid-template-columns:1fr}
+  .campos{grid-template-columns:1fr}
+  .cal-dia{min-height:70px;padding:3px}.ev{font-size:10px;padding:1px 3px}
+}
+</style>
+</head>
+<body>
+<div class="acceso" id="acceso">
+  <form class="acceso-caja" id="form-acceso" novalidate>
+    <div class="marca"><i></i>Greentech</div>
+    <h1 id="acceso-titulo">Portal del equipo técnico</h1>
+    <p id="acceso-sub">Entra con el correo y la contraseña que te dio Greentech.</p>
+    <div class="acceso-msg" id="acceso-msg" role="status" hidden></div>
+    <label id="campo-correo">Correo<input type="email" name="correo" autocomplete="username" required></label>
+    <label id="campo-clave">Contraseña<input type="password" name="clave" autocomplete="current-password" minlength="8" required></label>
+    <button class="boton" type="submit" id="acceso-boton">Entrar</button>
+    <button class="enlace-txt" type="button" id="olvide">Olvidé mi contraseña</button>
+    <button class="enlace-txt" type="button" id="acceso-salir" hidden>Cerrar sesión</button>
+    <a class="volver-web" href="../">← Volver a la web de Greentech</a>
+  </form>
+</div>
+<div id="portal" hidden>
+<div class="menu-movil"><span class="marca" style="padding:0"><i></i>Greentech</span><button type="button" id="abrir-menu" aria-expanded="false">Menú</button></div>
+<div class="app">
+  <nav class="lateral" id="lateral" aria-label="Menú del portal">
+    <div class="marca"><i></i>Greentech</div>
+    <button class="enlace" data-ir="inicio">Inicio</button>
+    <div class="grupo">Equipos</div>
+    <button class="enlace" data-ir="catalogo">Inversores y paneles <span class="n" id="n-catalogo"></span></button>
+    <div class="grupo">Proveedores</div>
+    <div id="menu-segmentos"></div>
+    <button class="enlace" data-ir="proveedores">Otros proveedores <span class="n" data-cuenta="proveedores"></span></button>
+    <div class="grupo">Operación</div>
+    <button class="enlace" data-ir="cotizaciones">Solicitud de cotizaciones <span class="n" data-cuenta="cotizaciones"></span></button>
+    <button class="enlace" data-ir="calendario">Calendario de instalaciones</button>
+    <button class="enlace" data-ir="instalaciones">Instalaciones <span class="n" data-cuenta="instalaciones"></span></button>
+    <button class="enlace" data-ir="eventos">Eventos <span class="n" data-cuenta="eventos"></span></button>
+    <button class="enlace" data-ir="pqr">Buzón de PQR <span class="n" data-cuenta="pqr"></span></button>
+    <button class="enlace" data-ir="aliados">Aliados <span class="n" data-cuenta="aliados"></span></button>
+    <button class="enlace" data-ir="webmail">Webmail</button>
+    <button class="enlace" data-ir="equipo" id="menu-equipo" hidden>Equipo y permisos</button>
+    <a class="enlace" href="../">Volver a la web</a>
+    <div class="quien"><span id="quien">Conectando…</span><button type="button" class="salir" id="salir">Cerrar sesión</button></div>
+  </nav>
+  <main class="principal" id="principal"></main>
+</div>
+
+</div>
+
+<dialog id="dialogo"><form class="form" id="formulario" method="dialog"></form></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var cop = function (n) { return n || n === 0 ? "$" + Math.round(n).toLocaleString("es-CO") : "—"; };
+  var trad = function (u) { return u && /^https?:\/\//.test(u) ? '<a href="https://translate.google.com/translate?sl=auto&tl=es&u=' + encodeURIComponent(u) + '" target="_blank" rel="noopener">Ver traducida al español</a>' : ""; };
+  var url = function (u, t) { return u && /^https?:\/\//.test(u) ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + (t || "Abrir") + "</a>" : ""; };
+  var hoyISO = function () { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+  var clase = function (s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z]/g, ""); };
+
+  var SEGMENTOS = [
+    ["paneles", "Paneles solares"], ["inversores_ongrid", "Inversores on grid"], ["inversores_offgrid", "Inversores off grid"],
+    ["inversores_hibridos", "Inversores híbridos"], ["microinversores", "Microinversores"], ["cable", "Cable solar"],
+    ["conectores", "Conectores para cable solar"], ["tablero", "Componentes de tablero"], ["baterias", "Baterías"], ["soportes", "Soportes y estructuras"]
+  ];
+  var NOM_SEG = Object.fromEntries(SEGMENTOS);
+
+  /* Cada módulo: colección en la base de datos, campos del formulario y columnas de la tabla */
+  var MOD = {
+    productos: { titulo: "Proveedores por segmento", uno: "producto", orden: "fecha",
+      campos: [["segmento", "Segmento", "select", SEGMENTOS.map(function (s) { return s[0]; })], ["marca", "Marca"], ["modelo", "Modelo o referencia"],
+        ["especificacion", "Especificación técnica", "textarea"], ["proveedor", "Proveedor o tienda"], ["ciudad", "Ciudad"],
+        ["precio_cop", "Precio (COP)", "number"], ["tipo_precio", "Tipo de precio", "select", ["Cotización", "Precio online", "Estimado"]],
+        ["iva_incluido", "IVA", "select", ["Incluido", "No incluido", "Sin dato"]], ["fecha", "Fecha del precio", "date"],
+        ["ficha_url", "Hoja técnica (enlace)", "url"], ["fuente_url", "Fuente del precio (enlace)", "url"], ["notas", "Notas", "textarea"]],
+      cols: function (x) { return [esc(x.marca) + " <b>" + esc(x.modelo) + "</b>", esc(x.especificacion || ""), esc(x.proveedor || "") + (x.ciudad ? "<br><small>" + esc(x.ciudad) + "</small>" : ""),
+        { num: cop(x.precio_cop) }, x.tipo_precio ? '<span class="chip ' + clase(x.tipo_precio).replace("preciooonline", "online").replace("preciononline", "online").replace("precioonline", "online") + '">' + esc(x.tipo_precio) + "</span>" : "", esc(x.fecha || ""),
+        url(x.ficha_url, "Hoja técnica") + (x.fuente_url ? "<br>" + url(x.fuente_url, "Fuente") : "")]; },
+      cab: ["Producto", "Especificación", "Proveedor", "Precio", "Tipo", "Fecha", "Documentos"] },
+    proveedores: { titulo: "Otros proveedores fotovoltaicos", uno: "proveedor", orden: "nombre",
+      campos: [["nombre", "Nombre"], ["segmentos", "Qué venden"], ["ciudad", "Ciudad"], ["web", "Sitio web", "url"], ["contacto", "Contacto (nombre, teléfono, correo)"], ["nota", "Notas", "textarea"]],
+      cols: function (x) { return ["<b>" + esc(x.nombre) + "</b>", esc(x.segmentos || ""), esc(x.ciudad || ""), esc(x.contacto || ""), url(x.web, "Sitio web"), esc(x.nota || "")]; },
+      cab: ["Proveedor", "Qué venden", "Ciudad", "Contacto", "Web", "Notas"] },
+    cotizaciones: { titulo: "Solicitud de cotizaciones", uno: "solicitud", orden: "fecha",
+      campos: [["fecha", "Fecha", "date"], ["cliente", "Cliente"], ["contacto", "Teléfono o correo"], ["ciudad", "Ciudad"],
+        ["perfil", "Perfil", "select", ["Hogar", "Mipyme", "Empresa e industria", "Móvil", "Electrolinera"]],
+        ["sistema", "Sistema", "select", ["On grid", "Híbrido", "Off grid", "Kit móvil", "Por definir"]], ["consumo_kwh", "Consumo (kWh/mes)", "number"],
+        ["valor_cop", "Valor cotizado (COP)", "number"], ["estado", "Estado", "select", ["Nueva", "En estudio", "Enviada", "Aceptada", "Perdida"]],
+        ["responsable", "Responsable"], ["notas", "Detalle de la solicitud", "textarea"]],
+      cols: function (x) { return [esc(x.fecha || ""), "<b>" + esc(x.cliente) + "</b><br><small>" + esc(x.contacto || "") + "</small>", esc(x.ciudad || ""), esc((x.perfil || "") + (x.sistema ? " · " + x.sistema : "")),
+        { num: x.consumo_kwh ? x.consumo_kwh + " kWh" : "—" }, { num: cop(x.valor_cop) }, chip(x.estado), esc(x.responsable || "")]; },
+      cab: ["Fecha", "Cliente", "Ciudad", "Perfil y sistema", "Consumo", "Valor", "Estado", "Responsable"] },
+    instalaciones: { titulo: "Instalaciones", uno: "instalación", orden: "fecha",
+      campos: [["fecha", "Fecha", "date"], ["hora", "Hora", "time"], ["cliente", "Cliente"], ["contacto", "Teléfono"], ["ciudad", "Ciudad"], ["direccion", "Dirección"],
+        ["kit", "Kit o sistema"], ["tecnico", "Técnicos asignados"], ["estado", "Estado", "select", ["Programada", "En curso", "Terminada", "Aplazada"]], ["notas", "Notas", "textarea"]],
+      cols: function (x) { return [esc(x.fecha || "") + (x.hora ? "<br><small>" + esc(x.hora) + "</small>" : ""), "<b>" + esc(x.cliente) + "</b><br><small>" + esc(x.contacto || "") + "</small>", esc((x.ciudad || "") + (x.direccion ? " · " + x.direccion : "")), esc(x.kit || ""), esc(x.tecnico || ""), chip(x.estado)]; },
+      cab: ["Fecha", "Cliente", "Lugar", "Kit", "Técnicos", "Estado"] },
+    eventos: { titulo: "Eventos", uno: "evento", orden: "fecha",
+      campos: [["titulo", "Nombre del evento"], ["tipo", "Tipo", "select", ["Feria", "Reunión", "Visita técnica", "Capacitación", "Lanzamiento", "Otro"]], ["fecha", "Fecha", "date"], ["hora", "Hora", "time"], ["lugar", "Lugar"], ["descripcion", "Descripción", "textarea"]],
+      cols: function (x) { return [esc(x.fecha || "") + (x.hora ? "<br><small>" + esc(x.hora) + "</small>" : ""), "<b>" + esc(x.titulo) + "</b>", esc(x.tipo || ""), esc(x.lugar || ""), esc(x.descripcion || "")]; },
+      cab: ["Fecha", "Evento", "Tipo", "Lugar", "Descripción"] },
+    pqr: { titulo: "Buzón de PQR", uno: "PQR", orden: "fecha",
+      campos: [["fecha", "Fecha", "date"], ["tipo", "Tipo", "select", ["Petición", "Queja", "Reclamo", "Sugerencia", "Felicitación"]], ["cliente", "Cliente"], ["contacto", "Teléfono o correo"],
+        ["descripcion", "Descripción", "textarea"], ["estado", "Estado", "select", ["Abierta", "En trámite", "Cerrada"]], ["respuesta", "Respuesta o solución", "textarea"]],
+      cols: function (x) { return [esc(x.fecha || ""), esc(x.tipo || ""), "<b>" + esc(x.cliente) + "</b><br><small>" + esc(x.contacto || "") + "</small>", esc(x.descripcion || ""), chip(x.estado), esc(x.respuesta || "")]; },
+      cab: ["Fecha", "Tipo", "Cliente", "Descripción", "Estado", "Respuesta"] },
+    aliados: { titulo: "Aliados", uno: "aliado", orden: "nombre",
+      campos: [["nombre", "Nombre"], ["tipo", "Tipo de alianza", "select", ["Inversión (electrolineras)", "Instalador", "Distribuidor", "Financiación", "Ingeniería", "Comercial", "Otro"]],
+        ["contacto", "Contacto"], ["web", "Sitio web", "url"], ["estado", "Estado", "select", ["En conversación", "Activo", "Inactivo"]], ["acuerdo", "Acuerdo o condiciones", "textarea"]],
+      cols: function (x) { return ["<b>" + esc(x.nombre) + "</b>", esc(x.tipo || ""), esc(x.contacto || ""), url(x.web, "Sitio web"), chip(x.estado), esc(x.acuerdo || "")]; },
+      cab: ["Aliado", "Tipo", "Contacto", "Web", "Estado", "Acuerdo"] }
+  };
+  function chip(s) { return s ? '<span class="chip ' + clase(s) + '">' + esc(s) + "</span>" : ""; }
+
+  /* ---------------- estado ---------------- */
+  var datos = {}, db = null, esAdmin = false, importando = "", puedeEscribir = true, vista = { pagina: "inicio", segmento: null }, cargado = false, mes = new Date();
+  Object.keys(MOD).forEach(function (k) { datos[k] = []; });
+
+  /* menú de segmentos */
+  $("#menu-segmentos").innerHTML = SEGMENTOS.map(function (s) {
+    return '<button class="enlace sub" data-ir="productos" data-seg="' + s[0] + '">' + s[1] + ' <span class="n" data-seg-n="' + s[0] + '"></span></button>';
+  }).join("");
+  $$("[data-ir]").forEach(function (b) {
+    b.addEventListener("click", function () { ir(b.dataset.ir, b.dataset.seg || null); $("#lateral").classList.remove("abierta"); });
+  });
+  $("#abrir-menu").addEventListener("click", function () { var l = $("#lateral"); l.classList.toggle("abierta"); this.setAttribute("aria-expanded", l.classList.contains("abierta")); });
+
+  function ir(p, seg) { vista.pagina = p; vista.segmento = seg; vista.q = ""; pintar(); window.scrollTo(0, 0); }
+
+  function marcarMenu() {
+    $$("[data-ir]").forEach(function (b) {
+      var activo = b.dataset.ir === vista.pagina && (b.dataset.seg || null) === (vista.pagina === "productos" ? vista.segmento : null);
+      if (activo) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+    });
+    Object.keys(MOD).forEach(function (k) { var n = $('[data-cuenta="' + k + '"]'); if (n) n.textContent = datos[k].length || ""; });
+    SEGMENTOS.forEach(function (s) { $('[data-seg-n="' + s[0] + '"]').textContent = datos.productos.filter(function (x) { return x.segmento === s[0]; }).length || ""; });
+  }
+
+  /* ---------------- vistas ---------------- */
+  function pintar() {
+    marcarMenu();
+    var m = $("#principal");
+    var aviso = !db && cargado ? '<div class="aviso">No hay conexión con la base de datos. Revisa tu conexión a internet y recarga la página.</div>' : "";
+    if (vista.pagina === "inicio") return m.innerHTML = aviso + inicio();
+    if (vista.pagina === "calendario") { m.innerHTML = aviso + calendario(); return enlazarCalendario(); }
+    if (vista.pagina === "webmail") return m.innerHTML = aviso + webmail();
+    if (vista.pagina === "equipo") { m.innerHTML = equipo(); return enlazarEquipo(); }
+    if (vista.pagina === "catalogo") { m.innerHTML = catalogo(); return enlazarCatalogo(); }
+    m.innerHTML = aviso + listado(vista.pagina);
+    enlazarListado(vista.pagina);
+  }
+
+  function inicio() {
+    var hoy = hoyISO(), en7 = new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10);
+    var abiertasC = datos.cotizaciones.filter(function (x) { return ["Nueva", "En estudio", "Enviada"].indexOf(x.estado) >= 0; });
+    var abiertasP = datos.pqr.filter(function (x) { return x.estado !== "Cerrada"; });
+    var proxInst = datos.instalaciones.filter(function (x) { return x.fecha >= hoy && x.estado !== "Terminada"; }).sort(porFecha);
+    var proxEv = datos.eventos.filter(function (x) { return x.fecha >= hoy; }).sort(porFecha);
+    var t = function (n, l, p) { return '<button class="tarjeta" data-ir2="' + p + '"><span>' + l + "</span><b>" + n + "</b></button>"; };
+    var mini = function (arr, f) { return arr.length ? '<ul class="lista-mini">' + arr.slice(0, 6).map(f).join("") + "</ul>" : '<p class="vacio" style="padding:12px">Nada por ahora.</p>'; };
+    setTimeout(function () { $$("[data-ir2]").forEach(function (b) { b.addEventListener("click", function () { ir(b.dataset.ir2); }); }); });
+    var caja = "";
+    return caja + '<div class="cabeza"><div><h1>Portal del equipo</h1><p>Proveedores, cotizaciones, instalaciones, eventos, PQR y aliados de Greentech en un solo lugar. Lo que guardas aquí lo ve todo el equipo con acceso.</p></div></div>' +
+      '<div class="tarjetas">' + t(abiertasC.length, "Cotizaciones abiertas", "cotizaciones") + t(proxInst.filter(function (x) { return x.fecha <= en7; }).length, "Instalaciones en 7 días", "calendario") +
+      t(abiertasP.length, "PQR sin cerrar", "pqr") + t(datos.productos.length, "Productos con precio o ficha", "productos") + "</div>" +
+      '<div class="dos"><div class="caja"><h2>Próximas instalaciones</h2>' + mini(proxInst, function (x) { return "<li><span>" + esc(x.fecha) + " · <b>" + esc(x.cliente) + "</b></span><span>" + esc(x.ciudad || "") + "</span></li>"; }) + "</div>" +
+      '<div class="caja"><h2>Próximos eventos</h2>' + mini(proxEv, function (x) { return "<li><span>" + esc(x.fecha) + " · <b>" + esc(x.titulo) + "</b></span><span>" + esc(x.lugar || "") + "</span></li>"; }) + "</div>" +
+      '<div class="caja"><h2>Cotizaciones abiertas</h2>' + mini(abiertasC.sort(porFecha).reverse(), function (x) { return "<li><span><b>" + esc(x.cliente) + "</b> · " + esc(x.sistema || "") + "</span><span>" + esc(x.estado) + "</span></li>"; }) + "</div>" +
+      '<div class="caja"><h2>PQR sin cerrar</h2>' + mini(abiertasP, function (x) { return "<li><span>" + esc(x.tipo) + " · <b>" + esc(x.cliente) + "</b></span><span>" + esc(x.fecha || "") + "</span></li>"; }) + "</div></div>";
+  }
+  function porFecha(a, b) { return String(a.fecha || "").localeCompare(String(b.fecha || "")); }
+
+  function filasDe(k) {
+    var arr = datos[k].slice();
+    if (k === "productos" && vista.segmento) arr = arr.filter(function (x) { return x.segmento === vista.segmento; });
+    var q = (vista.q || "").toLowerCase();
+    if (q) arr = arr.filter(function (x) { return JSON.stringify(x).toLowerCase().indexOf(q) >= 0; });
+    if (vista.tipoPrecio) arr = arr.filter(function (x) { return x.tipo_precio === vista.tipoPrecio; });
+    var o = MOD[k].orden;
+    arr.sort(function (a, b) { return o === "fecha" ? String(b.fecha || "").localeCompare(String(a.fecha || "")) : String(a[o] || "").localeCompare(String(b[o] || ""), "es"); });
+    return arr;
+  }
+
+  function listado(k) {
+    var M = MOD[k], arr = filasDe(k);
+    var titulo = k === "productos" ? (vista.segmento ? NOM_SEG[vista.segmento] : "Todos los productos") : M.titulo;
+    var sub = k === "productos" ? "Hojas técnicas, cotizaciones recibidas y precios encontrados en tiendas en línea. Revisa la fecha: los precios cambian." : "";
+    var precios = k === "productos" ? arr.filter(function (x) { return x.precio_cop; }).map(function (x) { return x.precio_cop; }) : [];
+    if (precios.length) sub += " Rango en esta vista: " + cop(Math.min.apply(null, precios)) + " a " + cop(Math.max.apply(null, precios)) + ".";
+    var filtroPrecio = k === "productos" ? '<select id="tipo-precio" aria-label="Tipo de precio"><option value="">Todos los precios</option>' + ["Cotización", "Precio online", "Estimado"].map(function (t) { return "<option" + (vista.tipoPrecio === t ? " selected" : "") + ">" + t + "</option>"; }).join("") + "</select>" : "";
+    var cuerpo = arr.length ? arr.map(function (x) {
+      return "<tr>" + M.cols(x).map(function (c) { return typeof c === "object" ? '<td class="num">' + c.num + "</td>" : "<td>" + c + "</td>"; }).join("") +
+        '<td class="acciones">' + (puedeEscribir ? '<button type="button" data-editar="' + esc(x._id) + '">Editar</button>' : "") + "</td></tr>";
+    }).join("") : '<tr><td colspan="' + (M.cab.length + 1) + '" class="vacio">' + (cargado ? "Todavía no hay registros aquí." : "Cargando…") + "</td></tr>";
+    return '<div class="cabeza"><div><h1>' + esc(titulo) + "</h1>" + (sub ? "<p>" + esc(sub) + "</p>" : "") + "</div>" +
+      (puedeEscribir ? '<button class="boton" type="button" id="nuevo">Agregar ' + M.uno + "</button>" : "") + "</div>" +
+      '<div class="herramientas"><input type="search" id="buscar" placeholder="Buscar por marca, proveedor, cliente…" value="' + esc(vista.q || "") + '">' + filtroPrecio + "</div>" +
+      '<div class="marco"><table><thead><tr>' + M.cab.map(function (c) { return "<th scope=\"col\">" + c + "</th>"; }).join("") + '<th></th></tr></thead><tbody>' + cuerpo + "</tbody></table></div>";
+  }
+
+  function enlazarListado(k) {
+    var b = $("#buscar"); if (b) b.addEventListener("input", function () { vista.q = b.value; var pos = b.selectionStart; pintar(); var nb = $("#buscar"); nb.focus(); nb.setSelectionRange(pos, pos); });
+    var tp = $("#tipo-precio"); if (tp) tp.addEventListener("change", function () { vista.tipoPrecio = tp.value; pintar(); });
+    var n = $("#nuevo"); if (n) n.addEventListener("click", function () { abrirForm(k, null); });
+    $$("[data-editar]").forEach(function (e) { e.addEventListener("click", function () { abrirForm(k, datos[k].find(function (x) { return x._id === e.dataset.editar; })); }); });
+  }
+
+  /* ---------------- formulario ---------------- */
+  function abrirForm(k, x) {
+    var M = MOD[k], f = $("#formulario");
+    var val = x || { fecha: hoyISO(), segmento: vista.segmento || undefined };
+    f.innerHTML = "<h2>" + (x ? "Editar " : "Agregar ") + M.uno + '</h2><div class="campos">' + M.campos.map(function (c) {
+      var v = val[c[0]] == null ? "" : val[c[0]], tipo = c[2] || "text", ancho = tipo === "textarea" ? ' class="ancho"' : "";
+      var input = tipo === "textarea" ? '<textarea name="' + c[0] + '">' + esc(v) + "</textarea>"
+        : tipo === "select" ? '<select name="' + c[0] + '">' + c[3].map(function (o) { return '<option value="' + esc(o) + '"' + (o === v ? " selected" : "") + ">" + esc(k === "productos" && c[0] === "segmento" ? NOM_SEG[o] : o) + "</option>"; }).join("") + "</select>"
+        : '<input name="' + c[0] + '" type="' + tipo + '" value="' + esc(v) + '"' + (tipo === "number" ? ' step="any" inputmode="decimal"' : "") + ">";
+      return "<label" + ancho + ">" + c[1] + input + "</label>";
+    }).join("") + '</div><p class="aviso" id="error-form" hidden></p><div class="pie-form"><div>' +
+      (x ? '<button type="button" class="boton peligro" id="borrar">Eliminar</button> <button type="button" class="boton peligro" id="borrar-si" hidden>Sí, eliminar</button>' : "") +
+      '</div><div><button type="button" class="boton sec" id="cancelar">Cancelar</button> <button type="submit" class="boton">Guardar</button></div></div>';
+    var dlg = $("#dialogo"); dlg.showModal();
+    $("#cancelar").addEventListener("click", function () { dlg.close(); });
+    if (x) {
+      $("#borrar").addEventListener("click", function () { this.hidden = true; $("#borrar-si").hidden = false; });
+      $("#borrar-si").addEventListener("click", function () { guardar(k, x._id, null, dlg); });
+    }
+    f.onsubmit = function (e) {
+      e.preventDefault();
+      var obj = {};
+      M.campos.forEach(function (c) { var v = f.elements[c[0]].value.trim(); if (v !== "") obj[c[0]] = c[2] === "number" ? Number(v) : v; });
+      guardar(k, x ? x._id : null, obj, dlg);
+    };
+  }
+
+  function guardar(k, id, obj, dlg) {
+    var err = $("#error-form");
+    if (!db) { err.textContent = "Sin conexión con la base de datos: no se guardó."; err.hidden = false; return; }
+    var ref = id ? db.collection(k).doc(id) : db.collection(k).doc();
+    var p = obj ? ref.set(Object.assign(obj, { actualizado: new Date().toISOString() })) : ref.delete();
+    p.then(function () { dlg.close(); }).catch(function (e) {
+      err.textContent = e && e.code === "invalid_argument" ? "Tu cuenta solo puede consultar; pide al administrador permiso de editor." : e && e.code === "quota_exceeded" ? "La base de datos está llena: borra registros viejos." : "No se pudo guardar. Intenta de nuevo.";
+      err.hidden = false;
+      if (e && e.code === "invalid_argument") { puedeEscribir = false; }
+    });
+  }
+
+  /* ---------------- calendario ---------------- */
+  function calendario() {
+    var y = mes.getFullYear(), mo = mes.getMonth(), primero = new Date(y, mo, 1), inicioSem = (primero.getDay() + 6) % 7;
+    var dias = new Date(y, mo + 1, 0).getDate(), hoy = hoyISO(), celdas = [];
+    for (var i = 0; i < 42; i++) {
+      var d = new Date(y, mo, 1 - inicioSem + i), iso = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+      var items = datos.instalaciones.filter(function (x) { return x.fecha === iso; }).map(function (x) { return '<button class="ev instalacion" data-ver="instalaciones" data-id="' + esc(x._id) + '" title="' + esc(x.cliente + " · " + (x.ciudad || "")) + '">' + esc((x.hora ? x.hora + " " : "") + x.cliente) + "</button>"; })
+        .concat(datos.eventos.filter(function (x) { return x.fecha === iso; }).map(function (x) { return '<button class="ev evento" data-ver="eventos" data-id="' + esc(x._id) + '" title="' + esc(x.titulo) + '">' + esc((x.hora ? x.hora + " " : "") + x.titulo) + "</button>"; }));
+      celdas.push('<div class="cal-dia' + (d.getMonth() !== mo ? " fuera" : "") + (iso === hoy ? " hoy" : "") + '"><span class="d">' + d.getDate() + "</span>" + items.join("") + "</div>");
+      if (i >= 34 && d.getMonth() !== mo && i % 7 === 6) break;
+    }
+    void dias;
+    return '<div class="cabeza"><div><h1>Calendario de instalaciones</h1><p>Instalaciones y eventos del mes. Toca uno para ver o editar el detalle.</p></div><div>' +
+      (puedeEscribir ? '<button class="boton sec" type="button" data-nuevo="eventos">Nuevo evento</button> <button class="boton" type="button" data-nuevo="instalaciones">Programar instalación</button>' : "") + "</div></div>" +
+      '<div class="calendario"><div class="cal-cabeza"><button class="boton sec" type="button" id="mes-ant" aria-label="Mes anterior">‹</button><h2>' +
+      primero.toLocaleDateString("es-CO", { month: "long", year: "numeric" }) + '</h2><button class="boton sec" type="button" id="mes-sig" aria-label="Mes siguiente">›</button></div>' +
+      '<div class="cal-grid">' + ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].map(function (s) { return '<div class="cal-sem">' + s + "</div>"; }).join("") + celdas.join("") + "</div></div>" +
+      '<div class="leyenda"><span class="li">Instalación</span><span class="le">Evento</span></div>';
+  }
+  function enlazarCalendario() {
+    $("#mes-ant").addEventListener("click", function () { mes = new Date(mes.getFullYear(), mes.getMonth() - 1, 1); pintar(); });
+    $("#mes-sig").addEventListener("click", function () { mes = new Date(mes.getFullYear(), mes.getMonth() + 1, 1); pintar(); });
+    $$("[data-nuevo]").forEach(function (b) { b.addEventListener("click", function () { abrirForm(b.dataset.nuevo, null); }); });
+    $$("[data-ver]").forEach(function (b) { b.addEventListener("click", function () { var k = b.dataset.ver; abrirForm(k, datos[k].find(function (x) { return x._id === b.dataset.id; })); }); });
+  }
+
+  /* ---------------- webmail ---------------- */
+  function webmail() {
+    return '<div class="cabeza"><div><h1>Webmail</h1><p>Accesos al correo del equipo. El correo con dominio propio (por ejemplo contacto@greentechsolar.com.co) se activa al comprar el dominio y el hosting.</p></div></div>' +
+      '<div class="correo">' +
+      '<a href="https://mail.hostinger.com" target="_blank" rel="noopener"><b>Correo Greentech</b><span>Webmail de Hostinger para las cuentas @dominio de Greentech.</span></a>' +
+      '<a href="https://outlook.live.com/mail/" target="_blank" rel="noopener"><b>Outlook / Hotmail</b><span>Correo actual mientras se activa el dominio.</span></a>' +
+      '<a href="https://mail.google.com" target="_blank" rel="noopener"><b>Gmail</b><span>Si el equipo usa cuentas de Google Workspace.</span></a>' +
+      "</div>";
+  }
+
+  /* ---------------- catálogo técnico: inversores, paneles y baterías (datos/equipos.js) ---------------- */
+  var EQ = {}, catSel = 0, GRUPOS = [], ITEMS = [];
+  var TIPOS = { micro: "Microinversor on grid", ongrid: "Inversor on grid", offgrid: "Inversor off grid", hibrido: "Inversor híbrido" };
+  var num = function (n, d) { return Number(n).toLocaleString("es-CO", { maximumFractionDigits: d || 0, minimumFractionDigits: d || 0 }); };
+  function prepararCatalogo(eq) {
+    EQ = eq || {}; catSel = 0;
+    var inv = EQ.inversores || [], porTipo = function (t) { return inv.filter(function (x) { return x.tipo === t; }); };
+    GRUPOS = [["Microinversores", porTipo("micro"), "inv"], ["Inversores on grid", porTipo("ongrid"), "inv"], ["Inversores híbridos", porTipo("hibrido"), "inv"],
+      ["Inversores off grid", porTipo("offgrid"), "inv"], ["Paneles premium", EQ.paneles || [], "panel"], ["Baterías de 48 V", EQ.baterias || [], "bat"]].filter(function (g) { return g[1].length; });
+    ITEMS = []; GRUPOS.forEach(function (g) { g[1].forEach(function (x) { ITEMS.push([x, g[2]]); }); });
+    var nc = $("#n-catalogo"); if (nc) nc.textContent = ITEMS.length || "";
+  }
+  function fila(e, v) { return v === null || v === undefined || v === "" ? "" : '<tr><th scope="row">' + e + "</th><td>" + esc(Array.isArray(v) ? v.join(", ") : v) + "</td></tr>"; }
+  function precio(p) { return p ? (typeof p === "number" ? cop(p) : p.valor ? cop(p.valor) : typeof p === "string" ? p : null) : null; }
+  function sino(v) { return v && typeof v === "object" ? v.explicacion || (v.valor ? "Sí" : "No") : v === true ? "Sí" : v === false ? "No" : v; }
+  function potTxt(v) { return v && typeof v === "object" ? (v.rango ? v.rango + " W" : "") + (v.modelo_650 ? " (" + v.modelo_650 + ")" : "") : v; }
+  function fichaHTML(x, c) {
+    var f;
+    if (c === "bat") f = fila("Energía", x.kwh != null ? num(x.kwh, 2) + " kWh" : null) + fila("Voltaje", x.voltaje_nominal_v ? x.voltaje_nominal_v + " V · " + (x.capacidad_ah || "") + " Ah" : null) + fila("Ciclos", x.ciclos) +
+      fila("Profundidad de descarga", x.dod != null ? x.dod + " %" : null) + fila("Comunicación", x.comunicacion) + fila("Garantía", x.garantia_anios != null ? x.garantia_anios + " años" : null) + fila("Precio aprox.", precio(x.precio_cop_aprox));
+    else if (c === "panel") f = fila("Potencia", potTxt(x.potencia_w)) + fila("Tecnología", x.tecnologia) + fila("Eficiencia", x.eficiencia != null ? x.eficiencia + " %" : null) +
+      fila("Bifacial", sino(x.bifacial)) + fila("Coef. temperatura", x.coef_temp_pmax != null ? x.coef_temp_pmax + " %/°C" : null) + fila("Anti sombra", sino(x.anti_sombra)) + fila("Anti polvo", sino(x.anti_polvo)) +
+      fila("Dimensiones", x.dimensiones_mm) + fila("Peso", x.peso_kg != null ? x.peso_kg + " kg" : null) + fila("Garantía de producto", x.garantia_producto_anios != null ? x.garantia_producto_anios + " años" : null) +
+      fila("Garantía de potencia", x.garantia_potencia) + fila("Precio aprox.", precio(x.precio_cop_aprox));
+    else f = fila("Potencia AC", x.potencia_ac_w != null ? num(x.potencia_ac_w) + " W" : null) + fila("Salida", x.salida) + fila("MPPT", x.mppt) + fila("Entradas de paneles", x.entradas_paneles) +
+      fila("Voltaje DC máx.", x.vdc_max != null ? x.vdc_max + " V" : null) + fila("Rango MPPT", x.rango_mppt) + fila("Corriente máx. de entrada", x.corriente_max_entrada_a) + fila("Eficiencia máx.", x.eficiencia_max != null ? x.eficiencia_max + " %" : null) +
+      fila("Protección", x.proteccion_ip) + fila("Monitoreo", x.monitoreo) + fila("Dimensiones", x.dimensiones_mm) + fila("Peso", x.peso_kg != null ? x.peso_kg + " kg" : null) + fila("Certificaciones", x.certificaciones) +
+      fila("Garantía", x.garantia_anios != null ? x.garantia_anios + " años" : null) + fila("Garantía extendida", x.garantia_extensible) + fila("Precio aprox.", precio(x.precio_cop_aprox));
+    var sello = "";
+    if (c === "inv") {
+      var red = (x.certificaciones || []).filter(function (k) { return /UL\s*1741|62109/i.test(k); });
+      sello = x.tipo === "offgrid" ? '<p class="sello sello-off">Off grid: no inyecta a la red, no necesita certificado de conexión del operador.</p>'
+        : red.length ? '<p class="sello">Certificado para conexión a la red · ' + esc(red.join(" · ")) + "</p>"
+        : '<p class="sello sello-falta">La ficha no muestra UL 1741 ni IEC 62109: el operador de red puede no aprobarlo.</p>';
+    }
+    var vent = (x.ventajas || x.otras_ventajas || []).map(function (v) { return "<li>" + esc(v) + "</li>"; }).join("");
+    var inf = (x.campos_inferidos || []).length ? '<p style="color:var(--suave);font-size:13px">No salen de la ficha: ' + esc(x.campos_inferidos.join(", ")) + "</p>" : "";
+    return "<h2>" + esc(x.marca + " " + x.modelo) + '</h2><p class="ficha-tipo">' + (c === "panel" ? "Panel solar" : c === "bat" ? "Batería" : TIPOS[x.tipo] || "Inversor") + "</p>" + sello +
+      "<table>" + f + "</table>" + (vent ? "<ul>" + vent + "</ul>" : "") + (x.notas ? '<p style="font-size:14px">' + esc(x.notas) + "</p>" : "") + inf +
+      (x.url_ficha ? "<p>" + url(x.url_ficha, "Ficha técnica del fabricante") + ' <span style="color:var(--suave)">(inglés)</span><br>' + trad(x.url_ficha) + '<br><small style="color:var(--suave)">La traducción es automática (Google Translate): revisa las cifras importantes en el original.</small></p>' : "");
+  }
+  function resumen(x, c) {
+    if (c === "bat") return (x.kwh ? num(x.kwh, 2) + " kWh" : "") + (x.ciclos ? " · " + ((String(x.ciclos).match(/\d[\d.]*/) || [""])[0]) + " ciclos" : "");
+    if (c === "panel") { var p = x.potencia_w && typeof x.potencia_w === "object" ? x.potencia_w.rango : x.potencia_w; return String(p || "").replace(/~/g, "–") + " W · " + (x.garantia_producto_anios || "—") + " años"; }
+    return (x.potencia_ac_w ? num(x.potencia_ac_w / 1000, 1) + " kW" : "") + " · " + (x.garantia_anios || "—") + " años";
+  }
+  function catalogo() {
+    if (!ITEMS.length) return '<div class="cabeza"><div><h1>Inversores y paneles</h1></div></div><p class="vacio">El catálogo de equipos no está disponible.</p>';
+    var q = (vista.q || "").toLowerCase(), i = 0;
+    var listas = GRUPOS.map(function (g) {
+      var filas = g[1].map(function (x) {
+        var k = i++; if (q && JSON.stringify(x).toLowerCase().indexOf(q) < 0) return "";
+        return '<button type="button" class="cat-fila" data-cat="' + k + '"' + (k === catSel ? ' aria-current="true"' : "") + ">" + esc(x.marca + " " + x.modelo) + "<small>" + esc(resumen(x, g[2])) + "</small></button>" +
+          '<div class="cat-det" data-det="' + k + '" hidden></div>';
+      }).join("");
+      return filas ? '<div class="cat-grupo"><h2>' + g[0] + "</h2>" + filas + "</div>" : "";
+    }).join("") || '<p class="vacio">Ningún equipo coincide con la búsqueda.</p>';
+    return '<div class="cabeza"><div><h1>Inversores y paneles</h1><p>Fichas técnicas de los equipos de referencia de Greentech' + (EQ.fecha ? ", revisadas el " + esc(EQ.fecha) : "") +
+      '. Toca un modelo para ver su ficha. Los precios son aproximados: confírmalos antes de cotizar.</p></div></div>' +
+      '<div class="herramientas"><input type="search" id="buscar-cat" placeholder="Buscar por marca, modelo, certificación…" value="' + esc(vista.q || "") + '"></div>' +
+      '<div class="cat"><div class="cat-listas">' + listas + '</div><aside class="ficha" id="ficha" aria-live="polite">' + fichaHTML(ITEMS[catSel][0], ITEMS[catSel][1]) + "</aside></div>";
+  }
+  function enlazarCatalogo() {
+    var b = $("#buscar-cat"); if (b) b.addEventListener("input", function () { vista.q = b.value; var pos = b.selectionStart; pintar(); var nb = $("#buscar-cat"); nb.focus(); nb.setSelectionRange(pos, pos); });
+    $$("[data-cat]").forEach(function (f) {
+      f.addEventListener("click", function () {
+        var k = +f.dataset.cat, it = ITEMS[k], movil = window.matchMedia("(max-width:900px)").matches;
+        catSel = k;
+        $$("[data-cat]").forEach(function (o) { if (o === f) o.setAttribute("aria-current", "true"); else o.removeAttribute("aria-current"); });
+        if (movil) {
+          var d = $('[data-det="' + k + '"]'), abierto = !d.hidden;
+          $$("[data-det]").forEach(function (o) { o.hidden = true; });
+          if (!abierto) { d.innerHTML = '<div class="ficha" style="position:static">' + fichaHTML(it[0], it[1]) + "</div>"; d.hidden = false; }
+        } else { $("#ficha").innerHTML = fichaHTML(it[0], it[1]); }
+      });
+    });
+  }
+
+  /* ---------------- equipo y permisos (solo admin) ---------------- */
+  var perfiles = [], ROLES = [["admin", "Administrador"], ["editor", "Editor"], ["lector", "Solo consulta"], ["pendiente", "Sin acceso"]];
+  function cargarPerfiles() {
+    return sb.from("perfiles").select("user_id,email,nombre,rol,creado").order("creado").then(function (r) { if (!r.error) perfiles = r.data; if (vista.pagina === "equipo") pintar(); });
+  }
+  function equipo() {
+    var filas = perfiles.map(function (p) {
+      var yo = sesion && p.user_id === sesion.user.id;
+      return "<tr><td><b>" + esc(p.email || "") + "</b>" + (yo ? " <small>(tú)</small>" : "") + "</td><td>" + esc((p.creado || "").slice(0, 10)) + '</td><td class="rol"><select data-rol="' + esc(p.user_id) + '"' + (yo ? " disabled" : "") + ">" +
+        ROLES.map(function (r) { return '<option value="' + r[0] + '"' + (r[0] === p.rol ? " selected" : "") + ">" + r[1] + "</option>"; }).join("") + "</select></td></tr>";
+    }).join("");
+    return '<div class="cabeza"><div><h1>Equipo y permisos</h1><p>Para dar acceso a un técnico: en Supabase entra a Authentication → Users → <b>Invite user</b> y escribe su correo. Le llega un enlace para crear su contraseña y aparece aquí como «Sin acceso» hasta que le asignes un rol.</p></div></div>' +
+      '<p class="aviso" id="error-rol" hidden></p><div class="marco"><table><thead><tr><th scope="col">Correo</th><th scope="col">Desde</th><th scope="col">Rol</th></tr></thead><tbody>' +
+      (filas || '<tr><td colspan="3" class="vacio">Cargando…</td></tr>') + "</tbody></table></div>" +
+      '<p style="color:var(--suave);font-size:13px">Administrador: todo, incluidos los permisos. Editor: agrega y cambia registros. Solo consulta: ve sin cambiar nada.</p>';
+  }
+  function enlazarEquipo() {
+    $$("[data-rol]").forEach(function (sel) {
+      sel.addEventListener("change", function () {
+        sb.from("perfiles").update({ rol: sel.value }).eq("user_id", sel.dataset.rol).select("user_id").then(function (r) {
+          if (r.error || !r.data.length) { var e = $("#error-rol"); e.textContent = "No se pudo cambiar el rol."; e.hidden = false; }
+          cargarPerfiles();
+        });
+      });
+    });
+  }
+
+  /* ---------------- conexión con la base de datos (Supabase) ---------------- */
+  var sb = null, sesion = null, rol = null, recargas = {};
+  var CFG = window.GT_SUPABASE || {};
+  /* el enlace de invitación o de recuperación trae type=invite / type=recovery */
+  var crearClave = /type=(invite|recovery)/.test(location.hash + location.search);
+
+  function falla(r) {
+    if (r.error) { var e = new Error(r.error.message); e.code = r.error.code === "42501" ? "invalid_argument" : r.error.code; throw e; }
+    if (r.data && !r.data.length) { var e2 = new Error("sin permiso"); e2.code = "invalid_argument"; throw e2; }
+    return r;
+  }
+  function nuevoId() { return window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2); }
+  async function leerColeccion(k) {
+    var todos = [], desde = 0;
+    for (;;) {
+      var r = await sb.from("registros").select("id,datos").eq("coleccion", k).range(desde, desde + 999);
+      if (r.error) throw r.error;
+      todos = todos.concat(r.data);
+      if (r.data.length < 1000) return todos;
+      desde += 1000;
+    }
+  }
+  /* misma forma que usaba el portal (colección → documento) sobre la tabla registros */
+  function crearDB() {
+    var oyentes = {};
+    sb.channel("registros").on("postgres_changes", { event: "*", schema: "public", table: "registros" }, function (p) {
+      var k = (p.new && p.new.coleccion) || (p.old && p.old.coleccion);
+      (k ? [k] : Object.keys(oyentes)).forEach(function (c) {
+        if (!oyentes[c]) return;
+        clearTimeout(recargas[c]); recargas[c] = setTimeout(oyentes[c], 250);
+      });
+    }).subscribe();
+    return { collection: function (k) {
+      return {
+        doc: function (id) {
+          id = id || nuevoId();
+          return {
+            set: function (obj) { return sb.from("registros").upsert({ coleccion: k, id: id, datos: obj, actualizado: new Date().toISOString() }).select("id").then(falla); },
+            delete: function () { return sb.from("registros").delete().eq("coleccion", k).eq("id", id).select("id").then(falla); }
+          };
+        },
+        onSnapshot: function (cb, alFallar) {
+          oyentes[k] = function () {
+            leerColeccion(k).then(function (filas) {
+              cb({ docs: filas.map(function (f) { return { id: f.id, data: function () { return f.datos || {}; } }; }), metadata: { fromCache: false } });
+            }).catch(alFallar);
+          };
+          oyentes[k]();
+        }
+      };
+    } };
+  }
+
+  /* ---------------- pantalla de acceso ---------------- */
+  var fa = $("#form-acceso"), modo = "entrar";
+  function mensaje(t, ok) { var m = $("#acceso-msg"); m.textContent = t || ""; m.hidden = !t; m.classList.toggle("ok", !!ok); }
+  function modoAcceso(md, txt, ok) {
+    modo = md;
+    $("#acceso").hidden = false; $("#portal").hidden = true;
+    var titulos = { entrar: ["Portal del equipo técnico", "Entra con el correo y la contraseña que te dio Greentech.", "Entrar"],
+      olvido: ["Recuperar contraseña", "Te enviamos un enlace a tu correo para crear una nueva.", "Enviar enlace"],
+      clave: ["Crea tu contraseña", "Mínimo 8 caracteres. La usarás para entrar al portal.", "Guardar contraseña"],
+      espera: ["Cuenta sin permisos", "Tu cuenta ya existe, pero el administrador aún no te ha dado acceso al portal.", "Volver a intentar"],
+      apagado: ["Portal en preparación", "El portal todavía no está conectado a la base de datos.", ""] }[md];
+    $("#acceso-titulo").textContent = titulos[0]; $("#acceso-sub").textContent = titulos[1];
+    $("#acceso-boton").textContent = titulos[2]; $("#acceso-boton").hidden = !titulos[2];
+    $("#campo-correo").hidden = !(md === "entrar" || md === "olvido");
+    $("#campo-clave").hidden = !(md === "entrar" || md === "clave");
+    fa.elements.clave.autocomplete = md === "clave" ? "new-password" : "current-password";
+    $("#olvide").hidden = md !== "entrar"; $("#olvide").textContent = "Olvidé mi contraseña";
+    if (md === "olvido") { $("#olvide").hidden = false; $("#olvide").textContent = "Volver a entrar"; }
+    $("#acceso-salir").hidden = md !== "espera";
+    mensaje(txt, ok);
+  }
+  $("#olvide").addEventListener("click", function () { modoAcceso(modo === "olvido" ? "entrar" : "olvido"); });
+  $("#acceso-salir").addEventListener("click", function () { sb.auth.signOut().then(function () { modoAcceso("entrar"); }); });
+  $("#salir").addEventListener("click", function () { sb.auth.signOut().then(function () { location.reload(); }); });
+
+  fa.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var correo = fa.elements.correo.value.trim(), clave = fa.elements.clave.value, b = $("#acceso-boton");
+    b.disabled = true; mensaje("");
+    try {
+      if (modo === "entrar") {
+        if (!correo || !clave) return mensaje("Escribe tu correo y tu contraseña.");
+        var r = await sb.auth.signInWithPassword({ email: correo, password: clave });
+        if (r.error) return mensaje(/invalid/i.test(r.error.message) ? "Correo o contraseña incorrectos." : /confirm/i.test(r.error.message) ? "Confirma tu correo con el enlace que te llegó." : "No se pudo entrar. Intenta de nuevo.");
+        await entrar(r.data.session);
+      } else if (modo === "olvido") {
+        if (!correo) return mensaje("Escribe tu correo.");
+        await sb.auth.resetPasswordForEmail(correo, { redirectTo: location.origin + location.pathname });
+        modoAcceso("entrar", "Si el correo está registrado, te llegará un enlace para crear una nueva contraseña.", true);
+      } else if (modo === "clave") {
+        if (clave.length < 8) return mensaje("La contraseña debe tener al menos 8 caracteres.");
+        var u = await sb.auth.updateUser({ password: clave });
+        if (u.error) return mensaje("No se pudo guardar la contraseña: " + u.error.message);
+        crearClave = false; history.replaceState(null, "", location.pathname);
+        var s = await sb.auth.getSession(); await entrar(s.data.session);
+      } else if (modo === "espera") {
+        var s2 = await sb.auth.getSession(); await entrar(s2.data.session);
+      }
+    } finally { b.disabled = false; fa.elements.clave.value = ""; }
+  });
+
+  var conectado = false;
+  async function entrar(s) {
+    if (!s) return modoAcceso("entrar");
+    sesion = s;
+    if (crearClave) return modoAcceso("clave");
+    var p = await sb.from("perfiles").select("rol,nombre,email").eq("user_id", s.user.id).maybeSingle();
+    rol = p.data && p.data.rol;
+    if (!rol || rol === "pendiente") return modoAcceso("espera", "Pide al administrador de Greentech que habilite tu cuenta (" + s.user.email + ").");
+    esAdmin = rol === "admin"; puedeEscribir = rol === "admin" || rol === "editor";
+    $("#acceso").hidden = true; $("#portal").hidden = false;
+    $("#menu-equipo").hidden = !esAdmin;
+    $("#quien").textContent = (p.data.nombre || s.user.email) + " · " + ({ admin: "Administrador", editor: "Editor", lector: "Solo consulta" }[rol]);
+    if (conectado) return pintar();
+    conectado = true;
+    db = crearDB();
+    if (esAdmin) cargarPerfiles();
+    pintar();
+    var limite = setTimeout(function () { cargado = true; pintar(); }, 10000);
+    sb.from("registros").select("datos").eq("coleccion", "config").eq("id", "equipos").maybeSingle().then(function (r) {
+      if (r.data) { prepararCatalogo(r.data.datos); if (vista.pagina === "catalogo") pintar(); else marcarMenu(); }
+    });
+    var pendientes = Object.keys(MOD).length;
+    Object.keys(MOD).forEach(function (k) {
+      db.collection(k).onSnapshot(function (snap) {
+        datos[k] = snap.docs.map(function (d) { return Object.assign({ _id: d.id }, d.data()); });
+        if (pendientes > 0) { pendientes--; if (!pendientes) { clearTimeout(limite); cargado = true; } }
+        if (!$("#dialogo").open) pintar(); else marcarMenu();
+      }, function () { cargado = true; pintar(); });
+    });
+  }
+
+  if (!CFG.url || !CFG.anonKey || !window.supabase) {
+    modoAcceso("apagado");
+  } else {
+    sb = window.supabase.createClient(CFG.url, CFG.anonKey);
+    modoAcceso("entrar");
+    sb.auth.onAuthStateChange(function (ev, s) {
+      if (ev === "PASSWORD_RECOVERY") { crearClave = true; sesion = s; modoAcceso("clave"); }
+      else if (ev === "SIGNED_OUT") { conectado = false; }
+    });
+    sb.auth.getSession().then(function (r) { if (r.data.session) entrar(r.data.session); });
+  }
+})();
+</script>
+</body>
+</html>
