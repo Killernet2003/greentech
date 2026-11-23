@@ -930,3 +930,11 @@ figure.revelar>*{opacity:1;transform:none}
 @media (max-width:600px){.envios-lista{grid-template-columns:minmax(0,1fr)}}
 .pie>.pie-creditos{margin:28px 0 0;padding-top:14px;border-top:1px solid #1E3127;font-size:11.5px;line-height:1.5;color:#5F7468;max-width:none}
 .pie>.pie-creditos a{color:#5F7468}
+
+/* ===== Botones con bordes suaves (reemplaza el corte en chaflán) ===== */
+.boton,.modo,.tipo,.ocr-opciones button,.sol-fotos-btn,.vitrina-item,.cupon-enviar,.pr-usar,.sol-sec,.meta span{clip-path:none;border-radius:16px}
+.boton{border-radius:18px}
+.boton-chico,.peldano-ampliar span{clip-path:none;border-radius:999px}
+.sol-x{clip-path:none;border-radius:50%}
+.etapa{border-radius:20px}
+.perfil{clip-path:none;border-radius:22px}
